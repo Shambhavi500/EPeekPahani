@@ -43,7 +43,7 @@ class OtpFragment : Fragment() {
         binding.btnVerify.setOnClickListener {
             val otp = "${binding.otp1.text}${binding.otp2.text}${binding.otp3.text}${binding.otp4.text}"
             if (otp == "1234" || otp.length == 4) { // Demo mode allows 1234 or any 4 digit
-                findNavController().navigate(R.id.action_otp_to_adminUnit)
+                findNavController().navigate(R.id.action_otp_to_dashboard)
             } else {
                 Snackbar.make(view, "अवैध OTP", Snackbar.LENGTH_SHORT).show()
             }

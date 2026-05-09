@@ -33,44 +33,44 @@ class AdminUnitFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             val divisions = sharedViewModel.getDivisions()
-            setupDropdown(binding.acDivision, divisions)
+            setupDropdown(binding.spinnerDivision, divisions)
         }
 
-        binding.acDivision.setOnItemClickListener { _, _, position, _ ->
-            val div = binding.acDivision.adapter.getItem(position) as String
+        binding.spinnerDivision.setOnItemClickListener { _, _, position, _ ->
+            val div = binding.spinnerDivision.adapter.getItem(position) as String
             viewLifecycleOwner.lifecycleScope.launch {
                 val districts = sharedViewModel.getDistricts(div)
-                setupDropdown(binding.acDistrict, districts)
-                binding.acDistrict.text = null
-                binding.acTaluka.text = null
-                binding.acVillage.text = null
+                setupDropdown(binding.spinnerDistrict, districts)
+                binding.spinnerDistrict.text = null
+                binding.spinnerTaluka.text = null
+                binding.spinnerVillage.text = null
             }
         }
 
-        binding.acDistrict.setOnItemClickListener { _, _, position, _ ->
-            val dist = binding.acDistrict.adapter.getItem(position) as String
+        binding.spinnerDistrict.setOnItemClickListener { _, _, position, _ ->
+            val dist = binding.spinnerDistrict.adapter.getItem(position) as String
             viewLifecycleOwner.lifecycleScope.launch {
                 val talukas = sharedViewModel.getTalukas(dist)
-                setupDropdown(binding.acTaluka, talukas)
-                binding.acTaluka.text = null
-                binding.acVillage.text = null
+                setupDropdown(binding.spinnerTaluka, talukas)
+                binding.spinnerTaluka.text = null
+                binding.spinnerVillage.text = null
             }
         }
 
-        binding.acTaluka.setOnItemClickListener { _, _, position, _ ->
-            val taluka = binding.acTaluka.adapter.getItem(position) as String
+        binding.spinnerTaluka.setOnItemClickListener { _, _, position, _ ->
+            val taluka = binding.spinnerTaluka.adapter.getItem(position) as String
             viewLifecycleOwner.lifecycleScope.launch {
                 val villages = sharedViewModel.getVillages(taluka)
-                setupDropdown(binding.acVillage, villages)
-                binding.acVillage.text = null
+                setupDropdown(binding.spinnerVillage, villages)
+                binding.spinnerVillage.text = null
             }
         }
 
         binding.btnNext.setOnClickListener {
-            val div = binding.acDivision.text.toString()
-            val dist = binding.acDistrict.text.toString()
-            val tal = binding.acTaluka.text.toString()
-            val vil = binding.acVillage.text.toString()
+            val div = binding.spinnerDivision.text.toString()
+            val dist = binding.spinnerDistrict.text.toString()
+            val tal = binding.spinnerTaluka.text.toString()
+            val vil = binding.spinnerVillage.text.toString()
 
             if (div.isEmpty() || dist.isEmpty() || tal.isEmpty() || vil.isEmpty()) {
                 Snackbar.make(view, "कृपया सर्व माहिती निवडा", Snackbar.LENGTH_SHORT).show()

@@ -36,20 +36,21 @@ class ReviewFragment : Fragment() {
         val crop = sharedViewModel.cropFormData.value
         val gps = sharedViewModel.gpsData.value
 
-        binding.tvFarmerName.text = farmer?.name
-        binding.tvVillage.text = unit?.village
-        binding.tvKhataGut.text = "${land?.khataNo} / ${land?.gutNo}"
-        binding.tvSeasonCrop.text = "${crop?.season} - ${crop?.cropName}"
-        binding.tvCropType.text = crop?.cropType
-        binding.tvArea.text = crop?.areaHectares.toString()
-        binding.tvDates.text = "${crop?.sowDate} - ${crop?.harvestDate}"
-        binding.tvGps.text = "${gps?.latitude} N, ${gps?.longitude} E"
+        binding.tvRevName.text = farmer?.name
+        binding.tvRevVillage.text = unit?.village
+        binding.tvRevGat.text = "${land?.khataNo} / ${land?.gutNo}"
+        binding.tvRevCrop.text = "${crop?.cropName}"
+        binding.tvRevSeason.text = "${crop?.season}"
+        binding.tvRevIrrigated.text = crop?.cropType
+        binding.tvRevArea.text = crop?.areaHectares.toString()
+        binding.tvRevSowDate.text = "${crop?.sowDate} - ${crop?.harvestDate}"
+        binding.tvRevGps.text = "${gps?.latitude} N, ${gps?.longitude} E"
 
         if (gps?.photo1Uri?.isNotEmpty() == true) {
-            Glide.with(this).load(Uri.parse(gps.photo1Uri)).into(binding.ivThumb1)
+            Glide.with(this).load(Uri.parse(gps.photo1Uri)).into(binding.ivRevPhoto1)
         }
         if (gps?.photo2Uri?.isNotEmpty() == true) {
-            Glide.with(this).load(Uri.parse(gps.photo2Uri)).into(binding.ivThumb2)
+            Glide.with(this).load(Uri.parse(gps.photo2Uri)).into(binding.ivRevPhoto2)
         }
 
         binding.cbConsent.setOnCheckedChangeListener { _, isChecked ->
@@ -63,15 +64,15 @@ class ReviewFragment : Fragment() {
         sharedViewModel.submitState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Loading -> {
-                    binding.pbSubmit.visibility = View.VISIBLE
+                    // binding.pbSubmit.visibility = View.VISIBLE
                     binding.btnSubmit.isEnabled = false
                 }
                 is UiState.Success -> {
-                    binding.pbSubmit.visibility = View.GONE
+                    // binding.pbSubmit.visibility = View.GONE
                     findNavController().navigate(R.id.action_review_to_success)
                 }
                 is UiState.Error -> {
-                    binding.pbSubmit.visibility = View.GONE
+                    // binding.pbSubmit.visibility = View.GONE
                     binding.btnSubmit.isEnabled = true
                     Snackbar.make(view, state.message, Snackbar.LENGTH_LONG).show()
                     // Still go to success since it's saved locally

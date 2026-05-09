@@ -17,6 +17,9 @@ interface CropRecordDao {
     @Query("SELECT * FROM crop_records WHERE isSubmitted = 0")
     suspend fun getPendingRecords(): List<CropRecord>
 
+    @Query("SELECT * FROM crop_records WHERE gutNo = :gutNo LIMIT 1")
+    suspend fun getCropRecordByGutNo(gutNo: String): CropRecord?
+
     @Query("UPDATE crop_records SET isSubmitted = 1 WHERE cropId = :id")
     suspend fun markAsSubmitted(id: Int)
     

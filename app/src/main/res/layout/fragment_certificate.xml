@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F3"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/ic_dialog_info"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="पीक पेरा प्रमाणपत्र"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1a6b3a" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Digital Crop Sowing Certificate"
+            android:textSize="14sp"
+            android:textColor="#6B7280"
+            android:layout_marginBottom="24dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB"
+            android:layout_marginBottom="24dp"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_marginBottom="24dp">
+
+            <TableRow android:layout_marginBottom="8dp">
+                <TextView android:text="शेतकरी नाव:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:id="@+id/tv_cert_farmer_name" android:textStyle="bold" android:textColor="#1C1C1C" />
+            </TableRow>
+            <TableRow android:layout_marginBottom="8dp">
+                <TextView android:text="गट क्रमांक:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:id="@+id/tv_cert_gat" android:textStyle="bold" android:textColor="#1C1C1C" />
+            </TableRow>
+            <TableRow android:layout_marginBottom="8dp">
+                <TextView android:text="घोषित पीक:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:id="@+id/tv_cert_crop" android:textStyle="bold" android:textColor="#1C1C1C" />
+            </TableRow>
+            <TableRow android:layout_marginBottom="8dp">
+                <TextView android:text="AI-सत्यापित पीक:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:id="@+id/tv_cert_ai_crop" android:textStyle="bold" android:textColor="#1C1C1C" />
+            </TableRow>
+        </TableLayout>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_ai_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI Verified"
+            android:textColor="@android:color/white"
+            app:chipBackgroundColor="#2E7D32"
+            android:layout_marginBottom="24dp"/>
+
+        <ImageView
+            android:id="@+id/iv_qr_code"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Digitally Signed (Mock)"
+            android:textColor="#B00020"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginBottom="32dp"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="डाउनलोड करा"
+            android:textColor="@android:color/white"
+            app:backgroundTint="#f7941d"
+            app:icon="@android:drawable/ic_menu_save"
+            app:iconTint="@android:color/white"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_share"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="शेअर करा"
+            android:textColor="#003087"
+            app:strokeColor="#003087"/>
+
+    </LinearLayout>
+</ScrollView>

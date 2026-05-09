@@ -29,25 +29,19 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSendOtp.setOnClickListener {
-            val name = binding.etName.text.toString().trim()
+            val name = "शेतकरी"
             val mobile = binding.etMobile.text.toString().trim()
 
-            if (name.isEmpty()) {
-                Snackbar.make(view, "कृपया पूर्ण नाव प्रविष्ट करा", Snackbar.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             if (mobile.length != 10) {
                 Snackbar.make(view, "कृपया 10 अंकी मोबाइल नंबर प्रविष्ट करा", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            binding.progressBar.visibility = View.VISIBLE
             binding.btnSendOtp.isEnabled = false
 
             sharedViewModel.setFarmer(Farmer(userId = mobile, name = name, mobile = mobile, authToken = ""))
             
             sharedViewModel.sendOtp(mobile) { success ->
-                binding.progressBar.visibility = View.GONE
                 binding.btnSendOtp.isEnabled = true
                 if (success || mobile.isNotEmpty()) { // Fallback to allow progress
                     findNavController().navigate(R.id.action_login_to_otp)

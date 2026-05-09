@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F4F6F3"
+    android:padding="16dp">
+
+    <include
+        android:id="@+id/offline_banner"
+        layout="@layout/offline_banner" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_green" />
+        <View android:layout_width="32dp" android:layout_height="4dp" android:background="#1a6b3a" />
+        <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_green" />
+        <View android:layout_width="32dp" android:layout_height="4dp" android:background="#E5E7EB" />
+        <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_grey" />
+        <View android:layout_width="32dp" android:layout_height="4dp" android:background="#E5E7EB" />
+        <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_grey" />
+        <View android:layout_width="32dp" android:layout_height="4dp" android:background="#E5E7EB" />
+        <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_grey" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_geofence_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GPS शोधत आहे..."
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#1a6b3a" />
+
+            <ProgressBar
+                android:id="@+id/pb_geofence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_geofence_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="कृपया शेतात उभे राहा"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_qr_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:text="तलाठी सहाय्य QR कोड मिळवा"
+                app:backgroundTint="#f7941d" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="पुढे →"
+        android:enabled="false"
+        app:backgroundTint="#1a6b3a"
+        app:cornerRadius="8dp" />
+
+</LinearLayout>

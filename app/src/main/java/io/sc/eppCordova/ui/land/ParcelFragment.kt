@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.sc.eppCordova.R
 import io.sc.eppCordova.data.local.entity.LandRecord
 import io.sc.eppCordova.databinding.FragmentParcelBinding
-import io.sc.eppCordova.databinding.ItemParcelBinding
+import io.sc.eppCordova.databinding.ItemParcelCardBinding
 import io.sc.eppCordova.ui.SharedViewModel
 
 @AndroidEntryPoint
@@ -45,14 +45,16 @@ class ParcelFragment : Fragment() {
         binding.rvParcels.adapter = ParcelAdapter(dummyRecords) { record ->
             selectedRecord = record
             binding.rvParcels.adapter?.notifyDataSetChanged()
+            sharedViewModel.setLandRecord(record)
+            findNavController().navigate(R.id.action_parcel_to_landRecord)
         }
 
-        binding.btnSelect.setOnClickListener {
-            selectedRecord?.let {
-                sharedViewModel.setLandRecord(it)
-                findNavController().navigate(R.id.action_parcel_to_landRecord)
-            }
-        }
+        // binding.btnSelect.setOnClickListener {
+        //     selectedRecord?.let {
+        //         sharedViewModel.setLandRecord(it)
+        //         findNavController().navigate(R.id.action_parcel_to_landRecord)
+        //     }
+        // }
     }
 
     override fun onDestroyView() {
@@ -65,27 +67,27 @@ class ParcelFragment : Fragment() {
         private val onClick: (LandRecord) -> Unit
     ) : RecyclerView.Adapter<ParcelAdapter.ViewHolder>() {
 
-        inner class ViewHolder(val binding: ItemParcelBinding) : RecyclerView.ViewHolder(binding.root)
+        inner class ViewHolder(val binding: ItemParcelCardBinding) : RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val binding = ItemParcelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemParcelCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return ViewHolder(binding)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val record = records[position]
-            holder.binding.tvKhata.text = record.khataNo
-            holder.binding.tvGut.text = record.gutNo
-            holder.binding.tvOwner.text = record.ownerName
-            holder.binding.tvArea.text = "${record.areaHectares} हेक्टर"
+            holder.binding.tvKhataArea.text = "खाता क्र: ${record.khataNo} | ${record.areaHectares} Ha."
+            holder.binding.tvBadgeGut.text = record.gutNo
+            holder.binding.tvOwnerName.text = record.ownerName
 
             if (record == selectedRecord) {
-                holder.binding.rootLayout.setBackgroundColor(Color.parseColor("#E8F5E9"))
+                holder.binding.cardParcel.setCardBackgroundColor(Color.parseColor("#E8F5E9"))
             } else {
-                holder.binding.rootLayout.setBackgroundColor(Color.WHITE)
+                holder.binding.cardParcel.setCardBackgroundColor(Color.WHITE)
             }
 
-            holder.binding.root.setOnClickListener { onClick(record) }
+            holder.binding.cardParcel.setOnClickListener { onClick(record) }
+            holder.binding.btnSelect.setOnClickListener { onClick(record) }
         }
 
         override fun getItemCount() = records.size

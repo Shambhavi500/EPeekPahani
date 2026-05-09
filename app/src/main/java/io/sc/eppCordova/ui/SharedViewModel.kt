@@ -27,7 +27,8 @@ data class GpsData(
     var longitude: Double = 0.0,
     var accuracy: Float = 0f,
     var photo1Uri: String = "",
-    var photo2Uri: String = ""
+    var photo2Uri: String = "",
+    var photo3Uri: String = ""
 )
 
 sealed class UiState {
@@ -103,6 +104,7 @@ class SharedViewModel @Inject constructor(
                 harvestDate = cropFormData.value?.harvestDate ?: "",
                 photo1Uri = gpsData.value?.photo1Uri ?: "",
                 photo2Uri = gpsData.value?.photo2Uri ?: "",
+                photo3Uri = gpsData.value?.photo3Uri ?: "",
                 latitude = gpsData.value?.latitude ?: 0.0,
                 longitude = gpsData.value?.longitude ?: 0.0,
                 timestamp = System.currentTimeMillis()
@@ -121,4 +123,8 @@ class SharedViewModel @Inject constructor(
         cropFormData.value = CropFormData()
         gpsData.value = GpsData()
     }
+    
+    fun setPhoto1Uri(uri: String) { gpsData.value = gpsData.value?.copy(photo1Uri = uri) }
+    fun setPhoto2Uri(uri: String) { gpsData.value = gpsData.value?.copy(photo2Uri = uri) }
+    fun setPhoto3Uri(uri: String) { gpsData.value = gpsData.value?.copy(photo3Uri = uri) }
 }

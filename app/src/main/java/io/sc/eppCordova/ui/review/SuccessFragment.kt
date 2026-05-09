@@ -36,8 +36,9 @@ class SuccessFragment : Fragment() {
             findNavController().navigate(R.id.action_success_to_adminUnit)
         }
 
+        binding.btnRecords.text = "प्रमाणपत्र पाहा"
         binding.btnRecords.setOnClickListener {
-            // Future implementation
+            findNavController().navigate(R.id.action_success_to_certificate)
         }
     }
 

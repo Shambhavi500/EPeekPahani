@@ -4,131 +4,223 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/surface">
+    android:background="@color/bg_screen">
 
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.App.Toolbar.Green"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/white">
+        android:layout_height="?attr/actionBarSize"
+        app:title="GPS व फोटो"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:navigationIconTint="@color/text_white" />
+
+    <include layout="@layout/step_indicator" />
+    <include android:id="@+id/offline_banner" layout="@layout/offline_banner" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="center">
+            android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/pbLocation"
-                android:layout_width="wrap_content"
+            <!-- Geofence PASS -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_geofence_pass"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/geofence_pass_bg"
+                app:cardElevation="2dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                app:cardCornerRadius="0dp"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="✅" android:textSize="32sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="शेतात आहात" android:textColor="@color/green_primary" android:textSize="16sp" android:textStyle="bold" android:layout_marginStart="12dp" />
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_accuracy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPS: ±8m" app:chipBackgroundColor="@color/green_primary" android:textColor="@color/text_white" android:textSize="11sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Geofence FAIL -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_geofence_fail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/geofence_fail_bg"
+                app:cardElevation="2dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                app:cardCornerRadius="0dp"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔒" android:textSize="32sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="शेताबाहेर आहात" android:textColor="@color/error" android:textSize="16sp" android:textStyle="bold" android:layout_marginStart="12dp" />
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="120dp" android:background="@color/divider" android:layout_marginBottom="8dp"/>
+                    <TextView android:id="@+id/tv_distance_fail" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="अंतर: ~45 मीटर. कृपया शेतात जा." android:textColor="@color/error" android:textSize="13sp" android:gravity="center" android:layout_marginBottom="8dp"/>
+                    <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="30s मध्ये पुन्हा तपासणी" android:layout_gravity="center"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Geofence LOADING -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_geofence_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardElevation="2dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                app:cardCornerRadius="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        app:indicatorColor="@color/green_primary" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GPS शोधत आहे..." android:textColor="@color/text_secondary" android:textSize="15sp" android:layout_marginTop="16dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3 फोटो काढा (अनिवार्य)"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/tvLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📍 स्थान मिळवत आहे..."
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/secondary"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/tvAccuracy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
-                android:textColor="#666666" />
-                
-            <TextView
-                android:id="@+id/tvGpsWarning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GPS सिग्नल कमकुवत - मोकळ्या जागी जा"
-                android:textColor="@color/error"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="32dp">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginEnd="8dp">
-
-            <ImageView
-                android:id="@+id/ivPhoto1"
-                android:layout_width="120dp"
+            <!-- Photo 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_photo_1"
+                android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:background="#E0E0E0"
-                android:scaleType="centerCrop"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <!-- Empty state -->
+                    <LinearLayout android:id="@+id/layout_empty_1" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:background="@drawable/bg_dashed_border">
+                        <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@android:drawable/ic_menu_camera" app:tint="@color/text_hint" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="फोटो 1 काढा" android:textColor="@color/text_hint" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                    <!-- Captured state -->
+                    <FrameLayout android:id="@+id/layout_captured_1" android:layout_width="match_parent" android:layout_height="match_parent" android:visibility="gone">
+                        <ImageView android:id="@+id/iv_photo_1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_photo_captured_gradient" />
+                        <TextView android:id="@+id/tv_badge_1" android:layout_width="24dp" android:layout_height="24dp" android:background="@drawable/shape_circle_green" android:text="✓" android:textColor="@color/text_white" android:gravity="center" android:layout_gravity="top|end" android:layout_margin="8dp"/>
+                    </FrameLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_photo_1" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@android:color/transparent" app:rippleColor="@color/ripple" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- AI Result Bar 1 -->
+            <FrameLayout android:id="@+id/ai_result_container_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="16dp" android:layout_marginBottom="8dp"/>
+
+            <!-- Photo 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_photo_2"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <LinearLayout android:id="@+id/layout_empty_2" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:background="@drawable/bg_dashed_border">
+                        <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@android:drawable/ic_menu_camera" app:tint="@color/text_hint" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="फोटो 2 काढा" android:textColor="@color/text_hint" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                    <FrameLayout android:id="@+id/layout_captured_2" android:layout_width="match_parent" android:layout_height="match_parent" android:visibility="gone">
+                        <ImageView android:id="@+id/iv_photo_2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_photo_captured_gradient" />
+                        <TextView android:id="@+id/tv_badge_2" android:layout_width="24dp" android:layout_height="24dp" android:background="@drawable/shape_circle_green" android:text="✓" android:textColor="@color/text_white" android:gravity="center" android:layout_gravity="top|end" android:layout_margin="8dp"/>
+                    </FrameLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_photo_2" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@android:color/transparent" app:rippleColor="@color/ripple" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <FrameLayout android:id="@+id/ai_result_container_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="16dp" android:layout_marginBottom="8dp"/>
+
+            <!-- Photo 3 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_photo_3"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <LinearLayout android:id="@+id/layout_empty_3" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:background="@drawable/bg_dashed_border">
+                        <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@android:drawable/ic_menu_camera" app:tint="@color/text_hint" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="फोटो 3 काढा" android:textColor="@color/text_hint" android:textSize="14sp" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                    <FrameLayout android:id="@+id/layout_captured_3" android:layout_width="match_parent" android:layout_height="match_parent" android:visibility="gone">
+                        <ImageView android:id="@+id/iv_photo_3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_photo_captured_gradient" />
+                        <TextView android:id="@+id/tv_badge_3" android:layout_width="24dp" android:layout_height="24dp" android:background="@drawable/shape_circle_green" android:text="✓" android:textColor="@color/text_white" android:gravity="center" android:layout_gravity="top|end" android:layout_margin="8dp"/>
+                    </FrameLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btn_photo_3" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@android:color/transparent" app:rippleColor="@color/ripple" />
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <FrameLayout android:id="@+id/ai_result_container_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="16dp" android:layout_marginBottom="16dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPhoto1"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                style="@style/Widget.App.Button.Outline"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="फोटो 1 काढा" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginStart="8dp">
-
-            <ImageView
-                android:id="@+id/ivPhoto2"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:background="#E0E0E0"
-                android:scaleType="centerCrop"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="📹 व्हिडिओ काढा (पर्यायी, 60 सेकंद)"
+                app:strokeColor="@color/saffron"
+                android:textColor="@color/saffron"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPhoto2"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_next"
+                style="@style/Widget.App.Button.Primary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="फोटो 2 काढा" />
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="24dp"
+                android:enabled="false"
+                android:text="पुढे: पुनरावलोकन →" />
+
         </LinearLayout>
-
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNext"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="पुढे: पुनरावलोकन"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/primary"
-        app:cornerRadius="8dp"
-        android:enabled="false"/>
-
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

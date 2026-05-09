@@ -27,14 +27,14 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        ObjectAnimator.ofInt(binding.progressBar, "progress", 0, 100).apply {
-            duration = 2000
-            start()
-        }
+        // ObjectAnimator.ofInt(binding.progressBar, "progress", 0, 100).apply {
+        //     duration = 2000
+        //     start()
+        // }
 
         viewLifecycleOwner.lifecycleScope.launch {
             delay(2000)
-            findNavController().navigate(R.id.action_splash_to_login)
+            findNavController().navigate(R.id.action_splash_to_language)
         }
     }
 

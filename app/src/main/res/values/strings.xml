@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">E-Peek Pahani</string>
+
+    <!-- Language Selection Screen -->
+    <string name="title_select_language">भाषा निवडा</string>
+    <string name="subtitle_select_language">Select Your Language</string>
+    <string name="lang_marathi">मराठी</string>
+    <string name="lang_hindi">हिंदी</string>
+    <string name="lang_english">English</string>
+    <string name="btn_continue">पुढे जा →</string>
 </resources>

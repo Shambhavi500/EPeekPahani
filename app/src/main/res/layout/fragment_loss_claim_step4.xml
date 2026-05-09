@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F3"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <include
+            android:id="@+id/offline_banner"
+            layout="@layout/offline_banner" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+            <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_green" />
+            <View android:layout_width="32dp" android:layout_height="4dp" android:background="#1a6b3a" />
+            <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_green" />
+            <View android:layout_width="32dp" android:layout_height="4dp" android:background="#1a6b3a" />
+            <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_green" />
+            <View android:layout_width="32dp" android:layout_height="4dp" android:background="#1a6b3a" />
+            <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_green" />
+            <View android:layout_width="32dp" android:layout_height="4dp" android:background="#E5E7EB" />
+            <View android:layout_width="16dp" android:layout_height="16dp" android:background="@drawable/circle_grey" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#1a6b3a"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:id="@+id/tv_summary_claim_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="दावा क्र: -"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/tv_summary_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="गट: - | अतिवृष्टी | 0.0 Ha"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AI विश्लेषण परिणाम"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ai_frames"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="10dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="नुकसानाची तीव्रता:" android:textColor="#6B7280"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chip_severity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Moderate" android:textColor="@android:color/white" app:chipBackgroundColor="#f7941d"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="फसवणूक धोका:" android:textColor="#6B7280"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chip_fraud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Low" android:textColor="@android:color/white" app:chipBackgroundColor="#2E7D32"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="पीक जुळणी:" android:textColor="#6B7280"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chip_match" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Verified" android:textColor="@android:color/white" app:chipBackgroundColor="#2E7D32"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="शिफारस नुकसानभरपाई:"
+                    android:textColor="#6B7280"/>
+                <TextView
+                    android:id="@+id/tv_compensation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="45%"
+                    android:textColor="#1a6b3a"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GPS मार्ग"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="10dp">
+            <!-- Placeholder for Map -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/ic_dialog_map"
+                android:scaleType="center"
+                android:background="#E5E7EB"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <CheckBox
+            android:id="@+id/cb_consent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="मी प्रमाणित करतो की वरील माहिती अचूक आहे आणि मी माझ्या नोंदणीकृत शेतात होतो"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_draft"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="मसुदा जतन करा"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="दावा सादर करा"
+            android:enabled="false"
+            app:backgroundTint="#1a6b3a"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+</ScrollView>

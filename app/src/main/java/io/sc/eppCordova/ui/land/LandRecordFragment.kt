@@ -39,13 +39,13 @@ class LandRecordFragment : Fragment() {
             binding.tvVillage.text = unit.village
         }
 
-        binding.btnStart.setOnClickListener {
-            val seasonId = binding.rgSeason.checkedRadioButtonId
+        binding.btnNext.setOnClickListener {
+            val seasonId = binding.toggleSeason.checkedButtonId
             if (seasonId == -1) {
                 Snackbar.make(view, "कृपया हंगाम निवडा", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val season = if (seasonId == R.id.rbKharif) "खरीप 2025" else "रब्बी 2025"
+            val season = if (seasonId == R.id.btn_kharif) "खरीप 2025" else "रब्बी 2025"
             
             val formData = sharedViewModel.cropFormData.value ?: CropFormData()
             formData.season = season

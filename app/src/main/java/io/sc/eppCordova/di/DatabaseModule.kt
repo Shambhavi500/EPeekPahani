@@ -11,6 +11,8 @@ import io.sc.eppCordova.data.local.AppDatabase
 import io.sc.eppCordova.data.local.dao.AdminUnitDao
 import io.sc.eppCordova.data.local.dao.CropRecordDao
 import io.sc.eppCordova.data.local.dao.LandRecordDao
+import io.sc.eppCordova.data.local.dao.LossClaimDao
+import io.sc.eppCordova.data.local.dao.SyncQueueDao
 import io.sc.eppCordova.utils.Constants
 import javax.inject.Singleton
 
@@ -25,7 +27,7 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             Constants.DB_NAME
-        ).fallbackToDestructiveMigration().build()
+        ).addMigrations(AppDatabase.MIGRATION_2_3, AppDatabase.MIGRATION_3_4).fallbackToDestructiveMigration().build()
     }
 
     @Provides
@@ -42,4 +44,14 @@ object DatabaseModule {
     @Singleton
     fun provideLandRecordDao(database: AppDatabase): LandRecordDao =
         database.landRecordDao()
+
+    @Provides
+    @Singleton
+    fun provideSyncQueueDao(database: AppDatabase): SyncQueueDao =
+        database.syncQueueDao()
+
+    @Provides
+    @Singleton
+    fun provideLossClaimDao(database: AppDatabase): LossClaimDao =
+        database.lossClaimDao()
 }

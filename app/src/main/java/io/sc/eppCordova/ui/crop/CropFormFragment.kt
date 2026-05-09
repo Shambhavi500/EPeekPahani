@@ -33,26 +33,19 @@ class CropFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, crops)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerCrop.adapter = adapter
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, crops)
+        binding.spinnerCropName.setAdapter(adapter)
 
         binding.etSowDate.setOnClickListener { showDatePicker { date -> binding.etSowDate.setText(date) } }
         binding.etHarvestDate.setOnClickListener { showDatePicker { date -> binding.etHarvestDate.setText(date) } }
 
         binding.btnNext.setOnClickListener {
-            val crop = binding.spinnerCrop.selectedItem.toString()
+            val crop = binding.spinnerCropName.text.toString()
             val sowDate = binding.etSowDate.text.toString()
             val harvestDate = binding.etHarvestDate.text.toString()
             val areaStr = binding.etArea.text.toString()
 
-            val typeId = binding.rgCropType.checkedRadioButtonId
-            val cropType = when (typeId) {
-                R.id.rbSingle -> "एकल"
-                R.id.rbMixed -> "मिश्र"
-                R.id.rbFallow -> "पडीक"
-                else -> ""
-            }
+            val cropType = if (binding.switchMixed.isChecked) "मिश्र" else "एकल"
 
             if (crop.isEmpty() || sowDate.isEmpty() || harvestDate.isEmpty() || cropType.isEmpty() || areaStr.isEmpty()) {
                 Snackbar.make(view, "कृपया सर्व माहिती भरा", Snackbar.LENGTH_SHORT).show()

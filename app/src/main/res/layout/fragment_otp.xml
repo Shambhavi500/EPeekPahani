@@ -4,94 +4,144 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/white"
-    android:gravity="center_horizontal">
+    android:background="@color/bg_screen">
 
-    <TextView
-        android:id="@+id/tvMobileInfo"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.App.Toolbar.Green"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="OTP पडताळणी"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:navigationIconTint="@color/text_white" />
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OTP पाठवला: XXXXXXXX10"
-        android:textColor="@color/secondary"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        android:textAlignment="center"/>
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="@color/bg_card"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="32dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center">
 
-        <EditText
-            android:id="@+id/otp1"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/otp_box"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@android:drawable/ic_dialog_email"
+                android:background="@drawable/shape_circle_green"
+                app:tint="@color/text_white"
+                android:padding="16dp"/>
 
-        <EditText
-            android:id="@+id/otp2"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/otp_box"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OTP पाठवला गेला"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="16dp" />
 
-        <EditText
-            android:id="@+id/otp3"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/otp_box"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_mobile_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 XXXXXX7890"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/green_primary"
+                android:layout_marginTop="4dp" />
 
-        <EditText
-            android:id="@+id/otp4"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:background="@drawable/otp_box"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLength="1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp">
+                
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otp1"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@drawable/selector_language_card"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+                    
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otp2"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@drawable/selector_language_card"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+                    
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otp3"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@drawable/selector_language_card"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+                    
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otp4"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@drawable/selector_language_card"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+            </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnVerify"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="पुष्टी करा"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/primary"
-        app:cornerRadius="8dp" />
+            <TextView
+                android:id="@+id/tv_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="पुन्हा OTP पाठवा (30s)"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="16dp" />
 
-    <TextView
-        android:id="@+id/tvResend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OTP पुन्हा पाठवा (30s)"
-        android:textColor="@color/accent"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="24dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_verify"
+                style="@style/Widget.App.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="पुष्टी करा" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

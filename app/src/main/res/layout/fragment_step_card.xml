@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="@color/bg_card"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tv_step_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="पायरी 1 / 6"
+            app:chipBackgroundColor="@color/saffron"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:layout_gravity="end"
+            android:layout_marginBottom="16dp" />
+
+        <ImageView
+            android:id="@+id/iv_illustration"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:layout_marginBottom="24dp"
+            app:tint="@color/text_hint"/>
+
+        <TextView
+            android:id="@+id/tv_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="कृपया खराब झालेल्या पिकाचे संपूर्ण क्षेत्र दाखवा"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_play_audio"
+            style="@style/Widget.App.Button.Outline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="▶ निर्देश ऐका"
+            android:layout_marginBottom="32dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/navy_light"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+                
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_record"
+                    style="@style/Widget.App.Button.Danger"
+                    android:layout_width="200dp"
+                    android:layout_height="64dp"
+                    android:text="रेकॉर्ड करा (60s)"
+                    app:cornerRadius="32dp" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"
+                    android:indeterminate="true"
+                    app:indicatorColor="@color/error"/>
+
+                <TextView
+                    android:id="@+id/tv_re_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="पुन्हा रेकॉर्ड करा"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
