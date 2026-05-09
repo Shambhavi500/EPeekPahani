@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="माहितीचे पुनरावलोकन"
+                    android:background="@color/accent"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:padding="12dp"
+                    android:gravity="center"/>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:stretchColumns="1">
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="शेतकरी:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvFarmerName" tools:text="राजेश विठ्ठल पाटील" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="गाव:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvVillage" tools:text="उरुळी कांचन" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="खाता / गट:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvKhataGut" tools:text="142 / 87" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="हंगाम / पीक:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvSeasonCrop" tools:text="खरीप 2025 - सोयाबीन" android:gravity="end" />
+                    </TableRow>
+                    
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="पीक प्रकार:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvCropType" tools:text="एकल" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="क्षेत्र (हेक्टर):" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvArea" tools:text="1.20" android:gravity="end" />
+                    </TableRow>
+                    
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="पेरणी / काढणी:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvDates" tools:text="15/06/2025 - 15/10/2025" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="16dp">
+                        <TextView android:text="GPS:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvGps" tools:text="18.5204 N, 73.8567 E" android:gravity="end" android:textSize="12sp" />
+                    </TableRow>
+                    
+                    <TableRow>
+                        <ImageView
+                            android:id="@+id/ivThumb1"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleType="centerCrop"
+                            android:layout_marginEnd="4dp"
+                            android:background="#E0E0E0"/>
+                        <ImageView
+                            android:id="@+id/ivThumb2"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleType="centerCrop"
+                            android:layout_marginStart="4dp"
+                            android:background="#E0E0E0"/>
+                    </TableRow>
+
+                </TableLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <CheckBox
+            android:id="@+id/cbConsent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="मी प्रमाणित करतो की वरील माहिती अचूक आहे"
+            android:textColor="@color/secondary"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <ProgressBar
+            android:id="@+id/pbSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="सर्वेक्षण सादर करा"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/primary"
+            app:cornerRadius="8dp"
+            android:enabled="false"/>
+
+    </LinearLayout>
+</ScrollView>

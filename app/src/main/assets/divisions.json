@@ -1,0 +1,6 @@
+[
+  {"code":"DIV1","name":"पुणे","nameEn":"Pune","type":"DIVISION"},
+  {"code":"DIST1","name":"पुणे","nameEn":"Pune","type":"DISTRICT","parentCode":"DIV1"},
+  {"code":"TAL1","name":"हवेली","nameEn":"Haveli","type":"TALUKA","parentCode":"DIST1"},
+  {"code":"VIL1","name":"शिवाजीनगर","nameEn":"Shivajinagar","type":"VILLAGE","parentCode":"TAL1"}
+]

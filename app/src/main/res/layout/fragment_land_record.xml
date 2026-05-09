@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="७/१२ उतारा तपशील"
+                    android:background="@color/secondary"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:padding="12dp"
+                    android:gravity="center"/>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:stretchColumns="1">
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="गाव:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvVillage" tools:text="उरुळी कांचन" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="खाता क्र:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvKhata" tools:text="142" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="गट क्र:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvGut" tools:text="87" android:gravity="end" />
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="क्षेत्र (हेक्टर):" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvArea" tools:text="1.20" android:gravity="end" android:textColor="@color/primary" android:textStyle="bold"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:text="मालक:" android:textColor="@color/secondary" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvOwner" tools:text="राजेश विठ्ठल पाटील" android:gravity="end" />
+                    </TableRow>
+
+                </TableLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="हंगाम निवडा"
+            android:textColor="@color/secondary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <RadioGroup
+            android:id="@+id/rgSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="32dp">
+
+            <RadioButton
+                android:id="@+id/rbKharif"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="खरीप 2025" />
+
+            <RadioButton
+                android:id="@+id/rbRabi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="रब्बी 2025" />
+        </RadioGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="पीक नोंदणी सुरू करा"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/primary"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+</ScrollView>
