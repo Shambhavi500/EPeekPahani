@@ -1,236 +1,230 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150/4CAF50/FFFFFF?text=EPeekPahani" alt="EPeekPahani Logo" width="150" height="150">
+  <img src="https://via.placeholder.com/200/4CAF50/FFFFFF?text=EPeekPahani" alt="EPeekPahani Logo" width="200" height="200">
 
   # EPeekPahani 🌱
-  **Empowering Farmers with Transparent, Digital Agricultural Workflows & Smart Land Records.**
+  **Revolutionizing Agricultural Workflows through Digital Land Records & AI-Powered Farming.**
 
-  [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-blue.svg?logo=kotlin)](https://kotlinlang.org)
-  [![Android API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?logo=android)](https://android.com)
-  [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-  [![Build Status](https://img.shields.io/badge/Build-Passing-success.svg)](#)
-  [![Contributions](https://img.shields.io/badge/Contributions-Welcome-orange.svg)](#)
+  *Empowering the rural ecosystem with transparent, modernized, and offline-first smart governance.*
+
+  [![Android API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=for-the-badge&logo=android)](https://android.com)
+  [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-blue.svg?style=for-the-badge&logo=kotlin)](https://kotlinlang.org)
+  [![Build Status](https://img.shields.io/badge/Build-Passing-success.svg?style=for-the-badge)](#)
+  [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+  [![Open Source](https://img.shields.io/badge/Open_Source-❤️-red.svg?style=for-the-badge)](#)
 </div>
 
 ---
 
 ## 📖 About EPeekPahani
 
-"Peek Pahani" traditionally refers to the manual inspection and recording of crops cultivated on a piece of agricultural land by government revenue officials. **EPeekPahani** is the digital transformation of this crucial agricultural land record system. 
+"Peek Pahani" is a traditional term deeply rooted in the agricultural administrative framework, referring to the physical inspection, verification, and recording of crops cultivated on a specific parcel of agricultural land. Historically, this meant manual ledgers, bureaucratic dependencies, and fragmented communication between the farmer and the government.
 
-It acts as a digital bridge between farmers and the administration. By digitizing crop registration and land records, EPeekPahani empowers farmers to self-report their crop data directly from their fields. This eliminates bureaucratic delays, enhances transparency, and ensures that government subsidies, insurance claims, and disaster relief can be dispersed accurately and efficiently based on verified digital footprints.
+**EPeekPahani** represents a monumental leap forward—a digital transformation of this critical workflow. We are bringing transparency, speed, and autonomy back to the farmer. By placing a robust digital tool in the hands of the rural community, EPeekPahani eliminates bottlenecks and shifts the paradigm from centralized bureaucracy to decentralized, tech-enabled self-reporting. This is more than just an app; it is a vital bridge connecting rural agriculture with modern digital governance, ensuring farmers get the recognition, subsidies, and assistance they deserve.
 
-## ⚠️ Problem Statement
+## 🚀 Our Vision
 
-Historically, agricultural records and rural documentation have been plagued by significant inefficiencies:
-* **Manual Data Entry:** Revenue officers manually registering crop data across thousands of acres, leading to inevitable human errors and outdated records.
-* **Farmer Difficulties:** Farmers facing long wait times, dependency on officers, and lack of direct access to their own land records.
-* **Corruption & Delays:** Lack of centralized, transparent digital workflows creating bottlenecks in disaster relief distribution and crop insurance processing.
-* **Data Silos:** Government bodies operating on fragmented, paper-based records, making macro-level agricultural planning nearly impossible.
+To build an equitable agricultural ecosystem where every farmer has instant, transparent, and secure access to their land records, powered by accessible technology and artificial intelligence. We envision a future where digital infrastructure entirely eradicates rural documentation delays, enabling predictive, proactive, and hyper-efficient farming worldwide.
+
+## ⚠️ The Problem Statement
+
+Traditional agricultural documentation systems are broken, plagued by systemic inefficiencies that directly harm the very people they are meant to serve—the farmers.
+
+* **Manual Redundancies:** Revenue officials manually transcribing data across thousands of acres leads to profound human error, lost files, and outdated land records.
+* **Farmer Dependency:** Farmers are forced to endure long wait times at administrative offices to request their own land documents (such as 7/12 extracts) or verify their crop sowing status.
+* **Corruption and Friction:** The lack of a transparent, trackable digital footprint creates environments ripe for exploitation, delayed disaster relief, and stalled crop insurance payouts.
+* **Data Silos & Lack of Actionable Insights:** Paper-based records mean governments and agricultural bodies operate blindly. Without centralized data, proactive macro-level agricultural planning is practically impossible.
+* **Digital Disconnect:** Existing digital solutions often ignore the reality of rural connectivity, failing entirely when offline or requiring complex navigation unsuited for the rural demographic.
 
 ## 💡 Solution Overview
 
-EPeekPahani modernizes the entire ecosystem by putting the power of digital governance directly into the farmer's hands:
-* **Self-Reporting:** Farmers can upload geotagged photos of their crops, instantly updating central land records.
-* **Transparent Workflows:** A clear, traceable path for every crop registration, reducing corruption and administrative friction.
-* **Smart Assistance:** Integrating AI-driven insights to help farmers make data-backed decisions based on localized weather and crop conditions.
-* **Digital Governance:** Providing administrators with a centralized, real-time dashboard of agricultural activity across regions.
+**EPeekPahani** shatters these barriers by decentralizing data entry and democratizing access to land records. Built specifically for the Android platform, it offers an intuitive, accessible interface that understands the reality of rural infrastructure. 
+
+We solve the crisis of agricultural documentation through:
+* **Decentralized Self-Reporting:** Farmers leverage their smartphones to upload geotagged, timestamped images of their crops, instantly updating central repositories.
+* **Offline-First Resilience:** A powerful local database architecture ensures that farmers can capture data deep in the fields without internet, syncing seamlessly once connectivity is restored.
+* **AI-Assisted Workflows:** Beyond just record-keeping, embedded Machine Learning models analyze uploaded images to detect crop health and provide intelligent advisory.
+* **OCR Automation:** Eliminating manual data entry by extracting text directly from official ID cards and old paper records using advanced optical character recognition.
+* **Smart Dashboards:** Providing both farmers and administrators with a holistic, real-time view of crop distributions, weather anomalies, and actionable agricultural analytics.
 
 ## ✨ Core Features
 
-| Feature | Description |
-| :--- | :--- |
-| 🧑‍🌾 **Farmer Profile System** | Secure, KYC-integrated profiles linking farmers to their designated land parcels. |
-| 📄 **Land Record Management** | Digital 7/12 (Satbara) extracts and Khata (Account) integrations for instant verification. |
-| 📷 **OCR Document Scanning** | Automated extraction of details from old paper records and ID proofs. |
-| 🤖 **AI-Powered Assistance** | Smart advisory system recommending crop rotations and predicting pest threats. |
-| 📊 **Smart Dashboards** | Intuitive visual analytics showing farm yield history and crop distribution. |
-| 📍 **Geo-location & Geofencing** | Validates crop photo uploads by cross-referencing GPS coordinates with land boundaries. |
-| 📶 **Offline-First Support** | Critical workflows function without internet, syncing automatically when connectivity returns. |
-| 🔔 **Notification System** | Alerts for extreme weather, government schemes, and crop survey deadlines. |
-| 🌍 **Multilingual Support** | Fully localized interfaces supporting regional languages (Marathi, Hindi, English). |
-| 🔒 **Secure Digital Records** | End-to-end encrypted storage to protect sensitive land ownership data. |
+* **🧑‍🌾 Secure Farmer Profiles:** Robust, Aadhaar-linked (or local ID) profile management that securely ties digital identity to physical land holdings.
+* **📄 Digital Land Records:** Instantaneous digital fetching and verification of vital land documents (e.g., Satbara, Khata) directly within the app.
+* **📷 Intelligent OCR Scanning:** Seamless extraction of textual data from physical documents, drastically reducing onboarding friction for users unfamiliar with typing.
+* **🤖 AI Agriculture Assistant:** On-device TensorFlow Lite models that process crop images to detect blight, pests, and nutrient deficiencies.
+* **📍 Precision Geofencing:** Mathematical validation of crop photos by cross-referencing embedded GPS metadata against government-registered land boundaries to prevent fraud.
+* **📶 Robust Offline Synchronization:** Deep integration with local SQLite/RoomDB databases guarantees that no data is lost during network drops.
+* **🌍 Multilingual UI:** Thoughtfully localized interface supporting multiple regional languages to ensure maximum accessibility for diverse farming communities.
+* **📊 Analytics Dashboard:** Visual representations of crop yield history, soil health trends, and regional agricultural data.
+* **🛡️ Admin / Revenue Controls:** A secure portal for government officials to quickly audit, approve, or flag farmer-submitted data in real-time.
 
-## 🛠️ Tech Stack
+## 🔄 End-to-End Workflow
 
-### Mobile & Core
-| Technology | Usage |
-| :--- | :--- |
-| **Android** | Native OS platform targeting broad accessibility |
-| **Kotlin** | Primary programming language (Coroutines, Flow) |
-| **Gradle** | Build system & dependency management |
+EPeekPahani guarantees a smooth, frictionless user journey from installation to verified record storage.
 
-### AI & Data Storage
-| Technology | Usage |
-| :--- | :--- |
-| **TensorFlow Lite** | On-device ML for crop disease detection & OCR |
-| **SQLite / RoomDB** | Robust local database for offline-first capabilities |
-| **Firebase** | Authentication, Crashlytics, and real-time backend sync |
+```mermaid
+sequenceDiagram
+    participant Farmer
+    participant App as EPeekPahani App
+    participant AI as AI & OCR Engine
+    participant Cloud as Cloud Backend
+    participant Govt as Govt Land Registry
 
-### Services & APIs
-| Technology | Usage |
-| :--- | :--- |
-| **Google Maps API** | Plotting land boundaries and geofencing |
-| **Location Services** | High-accuracy GPS verification for crop images |
-| **OpenWeather API** | Real-time agro-meteorological updates |
+    Farmer->>App: Register / Authenticate via OTP
+    App->>Cloud: Validate Credentials
+    Cloud-->>App: Access Token Granted
+    
+    Farmer->>App: Scan ID & Land Document
+    App->>AI: Extract details via OCR
+    AI-->>App: Structured Data Output
+    
+    Farmer->>App: Capture Geotagged Crop Photo
+    App->>AI: Analyze crop health/type
+    AI-->>App: AI Advisory & Validation
+    
+    App->>App: Store locally (Offline First)
+    App->>Cloud: Sync when Online
+    Cloud->>Govt: Cross-verify Geofence & Land Data
+    Govt-->>Cloud: Record Verified & Approved
+    Cloud-->>App: Success Notification
+    App-->>Farmer: Dashboard Updated
+```
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
-EPeekPahani follows a modern, scalable MVVM (Model-View-ViewModel) architecture tailored for robust Android development.
+Our architecture is designed for scale, resilience, and offline capability. Utilizing the modern Android MVVM pattern, we maintain a strict separation of concerns, ensuring high testability and smooth UI performance.
 
 ```mermaid
 graph TD
-    UI[UI Layer / Activities / Fragments] -->|State Flow| VM[ViewModel]
-    VM -->|Data Request| Repo[Repository]
-    
-    Repo -->|Local Read/Write| DB[(Room Database / Local)]
-    Repo -->|Remote Fetch| API[REST APIs / Firebase]
-    Repo -->|ML Inference| ML[TensorFlow Lite / AI Engine]
-    
-    DB -.->|Offline Sync| API
-    
-    API --> Gov[Govt Land Record Servers]
-    API --> Weather[Weather APIs]
+    subgraph Frontend [Android Client]
+        UI[Jetpack Compose / XML UI] --> VM[ViewModel Layer]
+        VM --> Repo[Repository Pattern]
+        
+        Repo --> LocalDB[(Room Database)]
+        Repo --> ML[TensorFlow Lite Engine]
+    end
+
+    subgraph Backend & Cloud [EPeekPahani Services]
+        Repo --> Retrofit[API Gateway / Retrofit]
+        Retrofit --> Auth[Firebase Authentication]
+        Retrofit --> MainAPI[Node.js / Spring Boot Backend]
+        
+        MainAPI --> CloudDB[(PostgreSQL / Cloud Firestore)]
+    end
+
+    subgraph External Integrations
+        MainAPI --> GovAPI[State Land Record APIs]
+        MainAPI --> WeatherAPI[OpenWeather Data]
+    end
 ```
 
-## 📂 Folder Structure
+## 🛠️ Tech Stack
 
-```text
-EPeekPahani/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/shambhavi/epeekpahani/
-│   │   │   │   ├── ui/          # Activities, Fragments, Compose screens
-│   │   │   │   ├── viewmodel/   # Business logic and state management
-│   │   │   │   ├── model/       # Data classes and entities
-│   │   │   │   ├── repository/  # Single source of truth for data
-│   │   │   │   ├── network/     # Retrofit clients, API services
-│   │   │   │   ├── database/    # Room DAOs and DB configurations
-│   │   │   │   ├── ai/          # TFLite wrappers and inference logic
-│   │   │   │   └── utils/       # Helpers, constants, and extensions
-│   │   │   ├── res/             # Layouts, drawables, strings, navigation
-│   │   │   └── AndroidManifest.xml
-│   ├── build.gradle.kts
-│   └── proguard-rules.pro
-├── gradle/                      # Gradle wrapper configuration
-├── local.properties             # SDK path and local secrets (Git-ignored)
-├── build.gradle.kts             # Project-level build script
-└── README.md
-```
+EPeekPahani is built on a foundation of cutting-edge, industry-standard technologies to ensure long-term maintainability and high performance.
 
-## 🚀 Installation & Setup Guide
+| Category | Technologies Used |
+| :--- | :--- |
+| **Frontend Platform** | Android SDK, Kotlin, XML / Jetpack Compose |
+| **Architecture** | MVVM, Android Architecture Components, LiveData/Flow |
+| **Local Database** | RoomDB, SQLite |
+| **AI & ML Engine** | TensorFlow Lite, ML Kit (OCR & Image Labeling) |
+| **Backend & APIs** | Firebase (Auth, Crashlytics), RESTful APIs, Retrofit2, OkHttp |
+| **Location & Maps** | Google Maps SDK, Fused Location Provider |
+| **Concurrency** | Kotlin Coroutines, WorkManager (for background sync) |
+| **Build & Dev Tools** | Gradle, Android Studio, Git, GitHub Actions |
+
+## 🚀 Installation & Setup
+
+We've designed the setup process to be as straightforward as possible for contributors and hackathon judges.
+
+### Prerequisites
+* **Android Studio:** Ladybug or latest stable version.
+* **Java Development Kit:** JDK 21.
+* **Android SDK:** API Level 34 (Minimum API 24).
+* **OS:** Windows 10/11, macOS, or Linux.
 
 ### 1. Clone the Repository
+Open your preferred terminal or PowerShell and run:
 ```powershell
 git clone https://github.com/Shambhavi500/EPeekPahani.git
 cd EPeekPahani
 ```
 
-### 2. Android Studio Setup
-* Open **Android Studio**.
-* Select **Open an existing project** and point it to the cloned `EPeekPahani` directory.
-* Ensure your IDE is configured to use **JDK 21** or later.
-
-### 3. Local Properties Setup
-Create a `local.properties` file in the root directory (if not automatically generated) to define your SDK path:
+### 2. Configure Local Properties
+You must provide the path to your Android SDK. Create a file named `local.properties` in the root directory:
 ```properties
+# D:\Projects\EPeekPahani\local.properties
 sdk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk
-# Add API keys here if required
-MAPS_API_KEY="your_api_key_here"
+MAPS_API_KEY="your_google_maps_api_key_here"
 ```
 
-### 4. Gradle Build
-Let Android Studio sync the project dependencies. Alternatively, run in PowerShell:
+### 3. Build the Project
+Sync the project with Gradle files in Android Studio, or build via command line to resolve dependencies:
 ```powershell
 .\gradlew.bat clean build
 ```
 
-### 5. Running the App
-* **Emulator:** Launch an AVD (Android Virtual Device) via the AVD Manager.
-* **Physical Device:** Connect via USB and enable USB Debugging.
-* Build and deploy:
+### 4. Run the Application
+Launch an Android Virtual Device (AVD) or connect a physical device via USB debugging. Execute the following to install the debug APK:
 ```powershell
 .\gradlew.bat assembleDebug
 .\gradlew.bat installDebug
 ```
 
-## 🖥️ Environment Requirements
-* **OS:** Windows 10/11, macOS, or Linux
-* **RAM:** 8 GB minimum (16 GB recommended for Android Studio + Emulator)
-* **Android Studio:** Ladybug (or latest stable)
-* **Android SDK:** API 34 (Minimum SDK API 24)
-* **Java Version:** JDK 21
-
-## 📦 Application Modules
-
-1. **Authentication:** Secure OTP-based login tailored for rural users, linked to Aadhaar/farmer IDs.
-2. **Dashboard:** Central hub summarizing crop status, local weather, and pending tasks.
-3. **Farmer Data:** Profile management containing personal info, land holdings, and banking details for subsidies.
-4. **Land Records:** Integration with local land registries (like 7/12) to visualize owned plots.
-5. **AI Recommendations:** Inference module analyzing soil, weather, and crop data to provide actionable advice.
-6. **Analytics:** Visual tracking of yield trends and expense management.
-7. **Settings:** Localization, notification preferences, and sync configurations.
-8. **Admin Controls:** (Role-based) Tools for officials to verify uploads and resolve disputes.
-
-## 🧠 AI & Smart Agriculture
-
-EPeekPahani goes beyond standard record-keeping by acting as an intelligent farming assistant:
-* **Disease Detection:** On-device image processing to diagnose leaf blights and pest attacks.
-* **Crop Recommendation:** Algorithms suggesting optimal crops based on historical yield data and current soil moisture.
-* **Predictive Analytics:** Forecasting harvest timelines and potential yield based on weather patterns.
-
 ## 🛡️ Security & Privacy
-* **End-to-End Encryption:** Sensitive land and banking details are encrypted both in transit and at rest.
-* **Secure APIs:** All communication with external and government servers uses TLS 1.3 and JWT tokens.
-* **Granular Permissions:** The app requests camera and location permissions strictly during the crop registration flow.
-* **Data Integrity:** Geotags and timestamps on images are digitally signed to prevent spoofing.
+
+Handling sensitive land records requires uncompromising security. EPeekPahani implements defense-in-depth:
+* **End-to-End Encryption:** All data transmitted between the Android client and the backend is secured via TLS 1.3.
+* **Encrypted Local Storage:** RoomDB instances utilize SQLCipher to prevent unauthorized access to local offline data if the device is compromised.
+* **Strict Permission Handling:** Camera and precise location permissions are requested *only* during the active photo-capture workflow, respecting user privacy.
+* **Immutable Geotagging:** GPS coordinates attached to images are cryptographically signed to prevent spoofing using mock location apps.
+* **Token-Based Auth:** Secure JWT / Firebase authentication ensures that sessions are properly managed and timed out.
 
 ## 🔮 Future Scope
-* **Blockchain Land Records:** Immutable, transparent ledgers for land ownership and transfer histories.
-* **Satellite & Drone Integration:** Using automated aerial imagery to verify crop health at a macro scale.
-* **IoT Sensor Integration:** Real-time sync with field sensors for soil pH, moisture, and temperature.
-* **Predictive Market Pricing:** AI advising farmers on optimal times to sell crops based on market forecasting.
+
+EPeekPahani is a living platform. Our roadmap includes ambitious integrations to further revolutionize AgriTech:
+* **Blockchain-Backed Land Registries:** Transitioning verified land records onto a distributed ledger for absolute immutability and transparent land transfers.
+* **Drone & Satellite Integration:** Correlating farmer-uploaded ground truth images with multispectral satellite data (e.g., Sentinel-2) to assess regional crop health.
+* **IoT Farming Sensors:** Real-time API integrations with field sensors tracking soil moisture, pH levels, and ambient temperature.
+* **Predictive Market Pricing:** Advanced AI modules that advise farmers on the optimal time and market to sell their yield based on global commodities forecasting.
+* **Comprehensive GovTech Ecosystem:** Expanding APIs to integrate directly with national agricultural subsidy and crop insurance platforms.
 
 ## 🚧 Development Challenges
-During development (especially in high-pressure hackathon environments), the team navigated:
-* **Offline Synchronization:** Building robust Room database logic that safely caches data and resolves conflicts upon reconnection.
-* **Geofencing Accuracy:** Handling GPS jitter and ensuring accurate location verification for rural plots.
-* **AI Model Optimization:** Compressing TensorFlow models to run efficiently on low-end smartphones.
-* **Gradle & JDK Compatibility:** Resolving build toolchain updates and ensuring consistent compilation environments.
 
-## 👥 Contributors
-| Name | Role | GitHub |
-| :--- | :--- | :--- |
-| **Shambhavi Patil** | Lead Developer | [@Shambhavi500](https://github.com/Shambhavi500) |
-| *Open to Contributions!* | | |
-
-## 🔄 Git Workflow
-We follow a structured trunk-based development workflow:
-* **`main`:** Stable, production-ready code.
-* **Feature Branches:** Created for new modules (e.g., `feature/ai-integration`).
-* **Commits:** Descriptive messages following Conventional Commits.
-* **Pull Requests:** Require code review and successful CI/Gradle checks before merging.
+Building a production-grade AgriTech platform in a condensed timeframe posed significant engineering hurdles:
+* **Offline Synchronization Logic:** Designing a robust conflict-resolution strategy for the Room database to ensure seamless synchronization when a device transitions from offline to online.
+* **AI Model Optimization:** Balancing accuracy and performance by compressing TensorFlow Lite models so they run smoothly on low-end, budget smartphones common in rural areas.
+* **Geofencing Accuracy:** Mitigating GPS jitter and ensuring high-fidelity location locking in remote areas without relying heavily on cell tower triangulation.
+* **Toolchain Compatibility:** Navigating Gradle dependency conflicts, JDK 21 alignment, and Kotlin versioning during rapid iteration.
 
 ## 📸 Demo & Screenshots
 
-> *Note: Placeholders for project media. Add images to a `/docs/assets` folder.*
+> *Note: UI Assets and Demo videos will be populated here.*
 
-| Dashboard | Crop Registration | AI Analysis |
+| User Dashboard | Digital Land Record | AI Advisory & OCR |
 | :---: | :---: | :---: |
-| ![Dashboard](https://via.placeholder.com/250x500/EEE/333?text=Dashboard+UI) | ![Registration](https://via.placeholder.com/250x500/EEE/333?text=Geo-Tagging) | ![AI](https://via.placeholder.com/250x500/EEE/333?text=Disease+Detection) |
+| <img src="https://via.placeholder.com/250x500/2C3E50/FFFFFF?text=Dashboard+UI" alt="Dashboard"> | <img src="https://via.placeholder.com/250x500/2C3E50/FFFFFF?text=Map+%26+Geofencing" alt="Land Record"> | <img src="https://via.placeholder.com/250x500/2C3E50/FFFFFF?text=AI+Inference" alt="AI Scan"> |
 
-**[▶️ Watch Demo Presentation Video Here](#)**  
-**[⬇️ Download Latest APK Here](#)**
+**[▶️ Watch the Full Demo Presentation Here](#)**  
+**[⬇️ Download the Latest Release APK](#)**
+
+## 👥 Contributors
+
+This project is driven by a passion for technology and social impact.
+
+| Name | Role | GitHub |
+| :--- | :--- | :--- |
+| **Shambhavi Patil** | Lead Engineer & Architect | [@Shambhavi500](https://github.com/Shambhavi500) |
+| *Open to Contributions!* | Join the movement. | |
+
+*Interested in contributing? Please read our [CONTRIBUTING.md](#) guidelines.*
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgements
-* Inspired by the urgent need for **agricultural digitization** and transparent governance.
-* Built during competitive **Hackathon environments** driving rural technology innovation.
-* Special thanks to open-source communities for Android, Kotlin, and machine learning tools making modern AgriTech accessible.
+This software is released under the [MIT License](LICENSE). You are free to use, modify, and distribute it, provided proper attribution is given.
 
 ---
 <div align="center">
-  <i>Digitizing agriculture, one farm at a time. 🌾</i>
+  <h3>EPeekPahani</h3>
+  <i>Transforming Agriculture Through Technology. Empowering Farmers Digitally. 🌍🌾</i>
 </div>
