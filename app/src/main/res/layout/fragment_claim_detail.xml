@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="दावा तपशील"
+            android:text="@string/str_auto_16"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"/>
@@ -24,6 +24,6 @@
             android:id="@+id/tv_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="तपशील लोड करत आहे..." />
+            android:text="@string/str_auto_17" />
     </LinearLayout>
 </ScrollView>

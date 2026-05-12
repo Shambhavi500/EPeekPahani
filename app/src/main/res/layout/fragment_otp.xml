@@ -1,147 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg_screen">
+    android:background="@color/background">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        style="@style/Widget.App.Toolbar.Green"
+    <!-- Top App Bar -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:title="OTP पडताळणी"
-        app:navigationIcon="@android:drawable/ic_menu_revert"
-        app:navigationIconTint="@color/text_white" />
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@color/surface">
 
-    <com.google.android.material.card.MaterialCardView
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:srcCompat="@drawable/ic_arrow_back"
+            app:tint="@color/primary"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_auto_140"
+            android:textColor="@color/primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:cardBackgroundColor="@color/bg_card"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center">
+            android:gravity="center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="24dp">
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@android:drawable/ic_dialog_email"
-                android:background="@drawable/shape_circle_green"
-                app:tint="@color/text_white"
-                android:padding="16dp"/>
+            <!-- OTP Illustration -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="32dp">
 
+                <ImageView
+                    android:id="@+id/iv_otp_illustration"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_otp_illustration"
+                    android:contentDescription="OTP verification illustration" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- OTP Sent To -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OTP पाठवला गेला"
+                android:text="@string/str_auto_141"
+                android:textColor="@color/on_surface_variant"
+                android:textSize="14sp"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_auto_142"
+                android:textColor="@color/on_surface"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="16dp" />
+                android:layout_marginBottom="32dp" />
 
-            <TextView
-                android:id="@+id/tv_mobile_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+91 XXXXXX7890"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/green_primary"
-                android:layout_marginTop="4dp" />
-
+            <!-- OTP Input Boxes -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="24dp">
-                
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/otp1"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="@drawable/selector_language_card"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <EditText
+                    android:id="@+id/et_otp1"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:gravity="center"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"/>
-                    
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/otp2"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="@drawable/selector_language_card"
+                    android:textColor="@color/on_surface"
+                    android:background="@drawable/bg_otp_input"
+                    android:layout_marginEnd="12dp" />
+
+                <EditText
+                    android:id="@+id/et_otp2"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:gravity="center"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"/>
-                    
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/otp3"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="@drawable/selector_language_card"
+                    android:textColor="@color/on_surface"
+                    android:background="@drawable/bg_otp_input"
+                    android:layout_marginEnd="12dp" />
+
+                <EditText
+                    android:id="@+id/et_otp3"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:gravity="center"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"/>
-                    
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/otp4"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:background="@drawable/selector_language_card"
+                    android:textColor="@color/on_surface"
+                    android:background="@drawable/bg_otp_input"
+                    android:layout_marginEnd="12dp" />
+
+                <EditText
+                    android:id="@+id/et_otp4"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:gravity="center"
                     android:inputType="number"
                     android:maxLength="1"
-                    android:gravity="center"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"/>
+                    android:textColor="@color/on_surface"
+                    android:background="@drawable/bg_otp_input" />
             </LinearLayout>
 
+            <!-- Resend Timer -->
             <TextView
-                android:id="@+id/tv_resend"
+                android:id="@+id/tv_resend_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="पुन्हा OTP पाठवा (30s)"
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary"
-                android:layout_marginTop="16dp" />
+                android:text="@string/str_auto_143"
+                android:textColor="@color/on_surface_variant"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="32dp" />
 
+            <!-- Confirm Button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_verify"
-                style="@style/Widget.App.Button.Primary"
+                android:id="@+id/btn_verify_otp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="पुष्टी करा" />
+                android:layout_height="48dp"
+                android:text="@string/str_auto_144"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/primary_container"
+                android:textColor="@color/on_primary"
+                app:cornerRadius="12dp" />
 
-            <ProgressBar
-                android:id="@+id/progress_bar"
+            <!-- Government Branding -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginTop="16dp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="40dp"
+                android:alpha="0.6">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/ic_maharashtra_emblem"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Gov Seal" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_auto_84"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_auto_145"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="10sp"
+                        android:letterSpacing="0.05" />
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

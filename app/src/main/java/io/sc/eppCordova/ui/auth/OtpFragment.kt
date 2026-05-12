@@ -32,17 +32,24 @@ class OtpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Show masked mobile number
         val mobile = sharedViewModel.farmerState.value?.mobile ?: ""
         if (mobile.length == 10) {
-            binding.tvMobileInfo.text = "OTP पाठवला: XXXXXX${mobile.substring(6)}"
+            binding.tvPhoneNumber.text = "+91 XXXXXX${mobile.substring(6)}"
+        }
+
+        // Back button
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         setupOtpInputs()
         startResendTimer()
 
-        binding.btnVerify.setOnClickListener {
-            val otp = "${binding.otp1.text}${binding.otp2.text}${binding.otp3.text}${binding.otp4.text}"
-            if (otp == "1234" || otp.length == 4) { // Demo mode allows 1234 or any 4 digit
+        // Verify OTP
+        binding.btnVerifyOtp.setOnClickListener {
+            val otp = "${binding.etOtp1.text}${binding.etOtp2.text}${binding.etOtp3.text}${binding.etOtp4.text}"
+            if (otp.length == 4) {
                 findNavController().navigate(R.id.action_otp_to_dashboard)
             } else {
                 Snackbar.make(view, "अवैध OTP", Snackbar.LENGTH_SHORT).show()
@@ -51,7 +58,12 @@ class OtpFragment : Fragment() {
     }
 
     private fun setupOtpInputs() {
-        val editTexts = listOf(binding.otp1, binding.otp2, binding.otp3, binding.otp4)
+        val editTexts = listOf(
+            binding.etOtp1,
+            binding.etOtp2,
+            binding.etOtp3,
+            binding.etOtp4
+        )
         for (i in 0..2) {
             editTexts[i].addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -61,17 +73,28 @@ class OtpFragment : Fragment() {
                 override fun afterTextChanged(s: Editable?) {}
             })
         }
+        // Handle backspace: move to previous field
+        for (i in 1..3) {
+            editTexts[i].setOnKeyListener { _, keyCode, event ->
+                if (keyCode == android.view.KeyEvent.KEYCODE_DEL &&
+                    event.action == android.view.KeyEvent.ACTION_DOWN &&
+                    editTexts[i].text.isNullOrEmpty()) {
+                    editTexts[i - 1].requestFocus()
+                    true
+                } else false
+            }
+        }
     }
 
     private fun startResendTimer() {
-        binding.tvResend.isEnabled = false
+        binding.tvResendTimer.isEnabled = false
         countDownTimer = object : CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                _binding?.tvResend?.text = "OTP पुन्हा पाठवा (${millisUntilFinished / 1000}s)"
+                _binding?.tvResendTimer?.text = "पुन्हा OTP पाठवा (${millisUntilFinished / 1000}s)"
             }
             override fun onFinish() {
-                _binding?.tvResend?.isEnabled = true
-                _binding?.tvResend?.text = "OTP पुन्हा पाठवा"
+                _binding?.tvResendTimer?.isEnabled = true
+                _binding?.tvResendTimer?.text = "पुन्हा OTP पाठवा"
             }
         }.start()
     }

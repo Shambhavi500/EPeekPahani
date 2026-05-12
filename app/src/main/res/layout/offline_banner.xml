@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📵"
+            android:text="@string/str_auto_199"
             android:textSize="20sp" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ऑफलाइन — X नोंदी sync बाकी"
+            android:text="@string/str_auto_214"
             android:textColor="@color/offline_text"
             android:textSize="13sp"
             android:layout_marginStart="8dp" />
@@ -38,7 +38,7 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sync करा"
+            android:text="@string/str_auto_215"
             android:textColor="@color/offline_text" />
 
     </LinearLayout>

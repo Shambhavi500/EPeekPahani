@@ -24,7 +24,7 @@
                 android:background="@color/green_primary"
                 android:padding="12dp"
                 android:gravity="center_vertical">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="🟢 AI सहाय्यक | GPS: ±8m | पायरी 3/6" android:textColor="@color/text_white" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/str_auto_108" android:textColor="@color/text_white" android:textSize="14sp" android:textStyle="bold"/>
             </LinearLayout>
             
             <androidx.recyclerview.widget.RecyclerView
@@ -48,12 +48,12 @@
                     
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_margin="16dp">
                         <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/shape_circle_red" /> <!-- You can reuse red shape -->
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="REC" android:textColor="@color/error" android:textStyle="bold" android:layout_marginStart="8dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_109" android:textColor="@color/error" android:textStyle="bold" android:layout_marginStart="8dp"/>
                     </LinearLayout>
                     
                     <ImageView android:layout_width="80dp" android:layout_height="80dp" android:src="@android:drawable/ic_dialog_map" android:background="#B3FFFFFF" android:layout_gravity="top|end" android:layout_margin="16dp"/>
                     
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:45" android:textColor="@color/text_white" android:textSize="24sp" android:textStyle="bold" android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="24dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_110" android:textColor="@color/text_white" android:textSize="24sp" android:textStyle="bold" android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="24dp"/>
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -69,7 +69,7 @@
                     android:id="@+id/btn_record_online"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="⏺ रेकॉर्ड करा"
+                    android:text="@string/str_auto_111"
                     android:textColor="@color/text_white"
                     app:backgroundTint="@color/error"/>
             </LinearLayout>
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:enabled="false"
-                android:text="पुढे →" />
+                android:text="@string/str_auto_107" />
         </LinearLayout>
     </FrameLayout>
 
@@ -106,7 +106,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🔴 ऑफलाइन मोड"
+                android:text="@string/str_auto_112"
                 android:textColor="@color/text_white"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="← मागे" />
+                    android:text="@string/str_auto_113" />
                     
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_next_offline"
@@ -142,7 +142,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:enabled="false"
-                    android:text="पुढे →" />
+                    android:text="@string/str_auto_107" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

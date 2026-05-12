@@ -50,7 +50,7 @@
                     android:id="@+id/tv_summary_claim_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="दावा क्र: -"
+                    android:text="@string/str_auto_114"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
@@ -58,7 +58,7 @@
                     android:id="@+id/tv_summary_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="गट: - | अतिवृष्टी | 0.0 Ha"
+                    android:text="@string/str_auto_115"
                     android:textColor="#B3FFFFFF"
                     android:textSize="14sp"/>
             </LinearLayout>
@@ -67,7 +67,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AI विश्लेषण परिणाम"
+            android:text="@string/str_auto_116"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
@@ -98,8 +98,8 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layout_marginBottom="8dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="नुकसानाची तीव्रता:" android:textColor="#6B7280"/>
-                    <com.google.android.material.chip.Chip android:id="@+id/chip_severity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Moderate" android:textColor="@android:color/white" app:chipBackgroundColor="#f7941d"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/str_auto_117" android:textColor="#6B7280"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chip_severity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_118" android:textColor="@android:color/white" app:chipBackgroundColor="#f7941d"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,8 +108,8 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layout_marginBottom="8dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="फसवणूक धोका:" android:textColor="#6B7280"/>
-                    <com.google.android.material.chip.Chip android:id="@+id/chip_fraud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Low" android:textColor="@android:color/white" app:chipBackgroundColor="#2E7D32"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/str_auto_119" android:textColor="#6B7280"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chip_fraud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_120" android:textColor="@android:color/white" app:chipBackgroundColor="#2E7D32"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -118,20 +118,20 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layout_marginBottom="16dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="पीक जुळणी:" android:textColor="#6B7280"/>
-                    <com.google.android.material.chip.Chip android:id="@+id/chip_match" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Verified" android:textColor="@android:color/white" app:chipBackgroundColor="#2E7D32"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/str_auto_121" android:textColor="#6B7280"/>
+                    <com.google.android.material.chip.Chip android:id="@+id/chip_match" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_122" android:textColor="@android:color/white" app:chipBackgroundColor="#2E7D32"/>
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="शिफारस नुकसानभरपाई:"
+                    android:text="@string/str_auto_123"
                     android:textColor="#6B7280"/>
                 <TextView
                     android:id="@+id/tv_compensation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="45%"
+                    android:text="@string/str_auto_124"
                     android:textColor="#1a6b3a"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -142,7 +142,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GPS मार्ग"
+            android:text="@string/str_auto_125"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
@@ -164,7 +164,7 @@
             android:id="@+id/cb_consent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="मी प्रमाणित करतो की वरील माहिती अचूक आहे आणि मी माझ्या नोंदणीकृत शेतात होतो"
+            android:text="@string/str_auto_126"
             android:layout_marginBottom="24dp"/>
 
         <com.google.android.material.button.MaterialButton
@@ -172,14 +172,14 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="मसुदा जतन करा"
+            android:text="@string/str_auto_127"
             android:layout_marginBottom="8dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="दावा सादर करा"
+            android:text="@string/str_auto_128"
             android:enabled="false"
             app:backgroundTint="#1a6b3a"
             app:cornerRadius="8dp" />

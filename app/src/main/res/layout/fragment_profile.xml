@@ -11,7 +11,7 @@
         style="@style/Widget.App.Toolbar.Green"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="प्रोफाइल"
+        app:title="@string/str_auto_159"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         app:navigationIconTint="@color/text_white" />
 
@@ -37,7 +37,7 @@
                     android:id="@+id/tv_avatar_initials"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="श"
+                    android:text="@string/str_auto_147"
                     android:textColor="@color/text_white"
                     android:textSize="40sp"
                     android:textStyle="bold"
@@ -48,7 +48,7 @@
                 android:id="@+id/tv_farmer_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="शेतकरी नाव"
+                android:text="@string/str_auto_148"
                 android:textColor="@color/text_primary"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -69,25 +69,76 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="वैयक्तिक माहिती" android:textColor="@color/green_primary" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_149" android:textColor="@color/green_primary" android:textStyle="bold" android:layout_marginBottom="8dp"/>
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginBottom="8dp" />
 
                     <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="1">
                         <TableRow android:layout_marginBottom="8dp">
-                            <TextView android:text="मोबाईल:" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:text="@string/str_auto_150" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
                             <TextView android:id="@+id/tv_mobile" android:textColor="@color/text_primary" android:textStyle="bold"/>
                         </TableRow>
                         <TableRow android:layout_marginBottom="8dp">
-                            <TextView android:text="आधार क्र:" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
-                            <TextView android:id="@+id/tv_aadhaar" android:text="XXXX-XXXX-1234" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                            <TextView android:text="@string/str_auto_151" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_aadhaar" android:text="@string/str_auto_152" android:textColor="@color/text_primary" android:textStyle="bold"/>
                         </TableRow>
                         <TableRow android:layout_marginBottom="8dp">
-                            <TextView android:text="पत्ता:" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:text="@string/str_auto_153" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
                             <TextView android:id="@+id/tv_address" android:textColor="@color/text_primary" android:textStyle="bold"/>
                         </TableRow>
                         <TableRow>
-                            <TextView android:text="PMFBY:" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
-                            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enrolled" app:chipBackgroundColor="@color/green_tint" android:textColor="@color/green_primary"/>
+                            <TextView android:text="@string/str_auto_154" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_155" app:chipBackgroundColor="@color/green_tint" android:textColor="@color/green_primary"/>
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- AgriStack Info Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AgriStack Land &amp; Crop Details" android:textColor="@color/green_primary" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginBottom="8dp" />
+
+                    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="1">
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="Survey/Gat No" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_khasra" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        </TableRow>
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="Land Area (Ha)" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_land_area" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        </TableRow>
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="Land Type" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_land_type" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        </TableRow>
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="Soil Type" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_soil_type" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        </TableRow>
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="Irrigation" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_irrigation" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        </TableRow>
+                        <TableRow android:layout_marginBottom="8dp">
+                            <TextView android:text="Crops" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_crops" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        </TableRow>
+                        <TableRow>
+                            <TextView android:text="KCC Loan" android:textColor="@color/text_secondary" android:paddingEnd="16dp"/>
+                            <TextView android:id="@+id/tv_kcc" android:textColor="@color/text_primary" android:textStyle="bold"/>
                         </TableRow>
                     </TableLayout>
                 </LinearLayout>
@@ -108,17 +159,21 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="सेटिंग्ज" android:textColor="@color/green_primary" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_156" android:textColor="@color/green_primary" android:textStyle="bold" android:layout_marginBottom="8dp"/>
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginBottom="8dp" />
 
                     <LinearLayout
+                        android:id="@+id/ll_language"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:paddingVertical="8dp">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="अॅप भाषा" android:textColor="@color/text_primary" android:textStyle="bold"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="मराठी" android:textColor="@color/text_secondary" android:layout_marginEnd="8dp"/>
+                        android:paddingVertical="8dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/str_auto_157" android:textColor="@color/text_primary" android:textStyle="bold"/>
+                        <TextView android:id="@+id/tv_current_language" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_72" android:textColor="@color/text_secondary" android:layout_marginEnd="8dp"/>
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_media_play" app:tint="@color/text_secondary" />
                     </LinearLayout>
 
@@ -132,7 +187,7 @@
                 android:layout_height="wrap_content"
                 app:strokeColor="@color/error"
                 android:textColor="@color/error"
-                android:text="लॉगआउट" />
+                android:text="@string/str_auto_158" />
 
         </LinearLayout>
     </ScrollView>

@@ -36,7 +36,7 @@
                 android:id="@+id/tv_claim_ref_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MH-2025-..."
+                android:text="@string/str_auto_204"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -45,7 +45,7 @@
                 android:id="@+id/tv_claim_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="गट: 001 | अतिवृष्टी"
+                android:text="@string/str_auto_205"
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:layout_marginTop="2dp"/>
@@ -54,7 +54,7 @@
                 android:id="@+id/tv_claim_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="तारीख: 2025-07-15"
+                android:text="@string/str_auto_206"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 android:layout_marginTop="2dp"/>
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/chip_status"
-                android:text="Submitted"
+                android:text="@string/str_auto_207"
                 android:textColor="@color/text_white"
                 android:textSize="11sp"
                 android:textStyle="bold"/>

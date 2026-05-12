@@ -31,7 +31,7 @@
                 android:id="@+id/tv_item_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="नोंदणी प्रकार"
+                android:text="@string/str_auto_211"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary" />
@@ -40,7 +40,7 @@
                 android:id="@+id/tv_item_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID: XXXXXX"
+                android:text="@string/str_auto_212"
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:layout_marginTop="2dp"/>
@@ -50,7 +50,7 @@
             android:id="@+id/chip_sync_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pending"
+            android:text="@string/str_auto_213"
             android:textColor="@color/text_white"
             app:chipBackgroundColor="@color/status_pending"/>
             

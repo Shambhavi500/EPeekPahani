@@ -57,8 +57,8 @@
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_dashboard_to_adminUnit"
-            app:destination="@id/adminUnitFragment" />
+            android:id="@+id/action_dashboard_to_landSelection"
+            app:destination="@id/landSelectionFragment" />
         <action
             android:id="@+id/action_dashboard_to_certificate"
             app:destination="@id/certificateFragment" />
@@ -71,6 +71,16 @@
         <action
             android:id="@+id/action_dashboard_to_syncStatus"
             app:destination="@id/syncStatusFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/landSelectionFragment"
+        android:name="io.sc.eppCordova.ui.land.ParcelFragment"
+        android:label="Select Gat"
+        tools:layout="@layout/fragment_land_selection">
+        <action
+            android:id="@+id/action_landSelection_to_cropForm"
+            app:destination="@id/cropFormFragment" />
     </fragment>
 
     <fragment
@@ -175,36 +185,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/adminUnitFragment"
-        android:name="io.sc.eppCordova.ui.location.AdminUnitFragment"
-        android:label="Admin Unit"
-        tools:layout="@layout/fragment_admin_unit">
-        <action
-            android:id="@+id/action_adminUnit_to_parcel"
-            app:destination="@id/parcelFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/parcelFragment"
-        android:name="io.sc.eppCordova.ui.land.ParcelFragment"
-        android:label="Parcel"
-        tools:layout="@layout/fragment_parcel">
-        <action
-            android:id="@+id/action_parcel_to_landRecord"
-            app:destination="@id/landRecordFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/landRecordFragment"
-        android:name="io.sc.eppCordova.ui.land.LandRecordFragment"
-        android:label="Land Record"
-        tools:layout="@layout/fragment_land_record">
-        <action
-            android:id="@+id/action_landRecord_to_cropForm"
-            app:destination="@id/cropFormFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/cropFormFragment"
         android:name="io.sc.eppCordova.ui.crop.CropFormFragment"
         android:label="Crop Form"
@@ -232,7 +212,7 @@
         <action
             android:id="@+id/action_review_to_success"
             app:destination="@id/successFragment"
-            app:popUpTo="@id/parcelFragment" />
+            app:popUpTo="@id/landSelectionFragment" />
     </fragment>
 
     <fragment
@@ -241,9 +221,9 @@
         android:label="Success"
         tools:layout="@layout/fragment_success">
         <action
-            android:id="@+id/action_success_to_adminUnit"
-            app:destination="@id/adminUnitFragment"
-            app:popUpTo="@id/adminUnitFragment"
+            android:id="@+id/action_success_to_landSelection"
+            app:destination="@id/landSelectionFragment"
+            app:popUpTo="@id/landSelectionFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_success_to_certificate"
@@ -254,4 +234,5 @@
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
+
 </navigation>

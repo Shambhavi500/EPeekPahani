@@ -3,6 +3,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crop Details" android:textSize="18sp" />
-    <Button android:id="@+id/btnNext" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Next (पुढील)" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/str_auto_36" android:textSize="18sp" />
+    <Button android:id="@+id/btnNext" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/str_auto_37" />
 </LinearLayout>

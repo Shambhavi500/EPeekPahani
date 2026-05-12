@@ -34,20 +34,22 @@ class CropFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, crops)
-        binding.spinnerCropName.setAdapter(adapter)
+        binding.acvCropName.setAdapter(adapter)
 
-        binding.etSowDate.setOnClickListener { showDatePicker { date -> binding.etSowDate.setText(date) } }
-        binding.etHarvestDate.setOnClickListener { showDatePicker { date -> binding.etHarvestDate.setText(date) } }
+        binding.etSowingDate.setOnClickListener { showDatePicker { date -> binding.etSowingDate.setText(date) } }
 
-        binding.btnNext.setOnClickListener {
-            val crop = binding.spinnerCropName.text.toString()
-            val sowDate = binding.etSowDate.text.toString()
-            val harvestDate = binding.etHarvestDate.text.toString()
-            val areaStr = binding.etArea.text.toString()
+        binding.btnStep2Prev.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
-            val cropType = if (binding.switchMixed.isChecked) "मिश्र" else "एकल"
+        binding.btnStep2Next.setOnClickListener {
+            val crop = binding.acvCropName.text.toString()
+            val sowDate = binding.etSowingDate.text.toString()
+            val areaStr = binding.etSowingArea.text.toString()
 
-            if (crop.isEmpty() || sowDate.isEmpty() || harvestDate.isEmpty() || cropType.isEmpty() || areaStr.isEmpty()) {
+            val cropType = if (binding.cbMixedCrop.isChecked) "मिश्र" else "एकल"
+
+            if (crop.isEmpty() || sowDate.isEmpty() || areaStr.isEmpty()) {
                 Snackbar.make(view, "कृपया सर्व माहिती भरा", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -61,7 +63,6 @@ class CropFormFragment : Fragment() {
             val formData = sharedViewModel.cropFormData.value ?: CropFormData()
             formData.cropName = crop
             formData.sowDate = sowDate
-            formData.harvestDate = harvestDate
             formData.cropType = cropType
             formData.areaHectares = area
             sharedViewModel.cropFormData.value = formData

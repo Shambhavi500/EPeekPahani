@@ -18,6 +18,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.sc.eppCordova.R
 import io.sc.eppCordova.data.local.dao.SyncQueueDao
 import io.sc.eppCordova.data.local.entity.SyncQueueEntity
+import io.sc.eppCordova.databinding.FragmentSyncStatusBinding
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -41,40 +42,49 @@ class SyncStatusViewModel @Inject constructor(
 @AndroidEntryPoint
 class SyncStatusFragment : Fragment() {
 
+    private var _binding: FragmentSyncStatusBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: SyncStatusViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_sync_status, container, false)
-        
-        view.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar).setNavigationOnClickListener {
+    ): View {
+        _binding = FragmentSyncStatusBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
 
-        val rv = view.findViewById<RecyclerView>(R.id.rv_sync_queue)
         val adapter = SyncQueueAdapter()
-        rv.adapter = adapter
+        binding.rvSyncQueue.adapter = adapter
 
         viewModel.pendingCount.observe(viewLifecycleOwner) { count ->
-            view.findViewById<TextView>(R.id.tv_pending_count).text = "$count नोंदी sync बाकी"
+            binding.tvPendingCount.text = "$count नोंदी sync बाकी"
         }
 
         viewModel.pendingItems.observe(viewLifecycleOwner) { items ->
             adapter.submitList(items)
         }
 
-        view.findViewById<View>(R.id.btn_sync_now).setOnClickListener {
+        binding.btnSyncNow.setOnClickListener {
             // Trigger WorkManager manually here
         }
-
-        return view
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.loadPendingItems()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     class SyncQueueAdapter : RecyclerView.Adapter<SyncQueueAdapter.ViewHolder>() {
@@ -86,21 +96,23 @@ class SyncStatusFragment : Fragment() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val v = LayoutInflater.from(parent.context).inflate(R.layout.item_sync_queue, parent, false)
-            return ViewHolder(v)
+            val binding = io.sc.eppCordova.databinding.ItemSyncQueueBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+            return ViewHolder(binding)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = items[position]
-            holder.itemView.findViewById<TextView>(R.id.tv_item_type).text = when(item.itemType) {
+            holder.binding.tvItemType.text = when(item.itemType) {
                 "REGISTRATION" -> "पीक नोंदणी"
                 "LOSS_CLAIM" -> "नुकसान दावा"
                 else -> item.itemType
             }
-            holder.itemView.findViewById<TextView>(R.id.tv_item_id).text = "ID: ${item.itemId}"
+            holder.binding.tvItemId.text = "ID: ${item.itemId}"
         }
 
         override fun getItemCount() = items.size
-        class ViewHolder(v: View) : RecyclerView.ViewHolder(v)
+        class ViewHolder(val binding: io.sc.eppCordova.databinding.ItemSyncQueueBinding) : RecyclerView.ViewHolder(binding.root)
     }
 }

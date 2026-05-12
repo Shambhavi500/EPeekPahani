@@ -12,16 +12,13 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.material.chip.Chip
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.sc.eppCordova.R
+import io.sc.eppCordova.databinding.FragmentCertificateBinding
 import io.sc.eppCordova.utils.MatchStatus
 import java.io.File
 import java.io.FileOutputStream
@@ -30,46 +27,52 @@ import java.io.OutputStream
 @AndroidEntryPoint
 class CertificateFragment : Fragment() {
 
+    private var _binding: FragmentCertificateBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: CertificateViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_certificate, container, false)
-        
+    ): View {
+        _binding = FragmentCertificateBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         viewModel.certificateData.observe(viewLifecycleOwner) { data ->
-            view.findViewById<TextView>(R.id.tv_cert_farmer_name).text = data.farmer?.name ?: "-"
-            view.findViewById<TextView>(R.id.tv_cert_gat).text = data.cropRecord?.gutNo ?: "-"
-            view.findViewById<TextView>(R.id.tv_cert_crop).text = data.cropRecord?.cropName ?: "-"
-            view.findViewById<TextView>(R.id.tv_cert_ai_crop).text = data.cropRecord?.aiDetectedCrop ?: "N/A"
+            binding.tvCertFarmerName.text = data.farmer?.name ?: "-"
+            binding.tvCertGat.text = data.cropRecord?.gutNo ?: "-"
+            binding.tvCertCrop.text = data.cropRecord?.cropName ?: "-"
+            binding.tvCertAiCrop.text = data.cropRecord?.aiDetectedCrop ?: "N/A"
             
-            val chip = view.findViewById<Chip>(R.id.chip_ai_status)
             when (data.cropRecord?.aiMatchStatus) {
                 MatchStatus.VERIFIED.name -> {
-                    chip.text = "AI Verified"
-                    chip.setChipBackgroundColorResource(android.R.color.holo_green_dark)
+                    binding.chipAiStatus.text = "AI Verified"
+                    binding.chipAiStatus.setChipBackgroundColorResource(android.R.color.holo_green_dark)
                 }
                 MatchStatus.MISMATCH.name -> {
-                    chip.text = "Mismatch Warning"
-                    chip.setChipBackgroundColorResource(android.R.color.holo_orange_dark)
+                    binding.chipAiStatus.text = "Mismatch Warning"
+                    binding.chipAiStatus.setChipBackgroundColorResource(android.R.color.holo_orange_dark)
                 }
                 else -> {
-                    chip.text = "Pending"
-                    chip.setChipBackgroundColorResource(android.R.color.darker_gray)
+                    binding.chipAiStatus.text = "Pending"
+                    binding.chipAiStatus.setChipBackgroundColorResource(android.R.color.darker_gray)
                 }
             }
             
             data.qrBitmap?.let {
-                view.findViewById<ImageView>(R.id.iv_qr_code).setImageBitmap(it)
+                binding.ivQrCode.setImageBitmap(it)
             }
         }
         
-        view.findViewById<ExtendedFloatingActionButton>(R.id.fab_download).setOnClickListener {
+        binding.fabDownload.setOnClickListener {
             generateAndSavePdf(view)
         }
         
-        view.findViewById<Button>(R.id.btn_share).setOnClickListener {
+        binding.btnShare.setOnClickListener {
             val shareIntent = Intent().apply {
                 action = Intent.ACTION_SEND
                 type = "text/plain"
@@ -80,12 +83,9 @@ class CertificateFragment : Fragment() {
 
         val mockGatNo = "001" 
         viewModel.generateCertificate(mockGatNo)
-
-        return view
     }
 
     private fun generateAndSavePdf(view: View) {
-        // Measure and layout the view to ensure we get its actual dimensions
         val width = view.width
         val height = view.height
         
@@ -94,7 +94,6 @@ class CertificateFragment : Fragment() {
             return
         }
 
-        // Create a bitmap and draw the view onto it
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         view.draw(canvas)
@@ -103,11 +102,9 @@ class CertificateFragment : Fragment() {
         val pageInfo = PdfDocument.PageInfo.Builder(width, height, 1).create()
         val page = document.startPage(pageInfo)
 
-        // Draw the bitmap onto the PDF page
         page.canvas.drawBitmap(bitmap, 0f, 0f, null)
         document.finishPage(page)
 
-        // Save using MediaStore for scoped storage
         val fileName = "Sowing_Certificate_${System.currentTimeMillis()}.pdf"
         var outputStream: OutputStream? = null
 
@@ -140,5 +137,10 @@ class CertificateFragment : Fragment() {
         } finally {
             document.close()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

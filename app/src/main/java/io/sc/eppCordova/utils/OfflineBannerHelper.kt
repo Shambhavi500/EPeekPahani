@@ -1,11 +1,11 @@
 package io.sc.eppCordova.utils
 
 import android.view.View
-import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
 import io.sc.eppCordova.R
 import io.sc.eppCordova.data.local.dao.SyncQueueDao
+import io.sc.eppCordova.databinding.OfflineBannerBinding
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,7 +15,7 @@ class OfflineBannerHelper @Inject constructor(
     private val syncQueueDao: SyncQueueDao
 ) {
     fun attach(bannerView: View, viewLifecycleOwner: LifecycleOwner) {
-        val tvMessage = bannerView.findViewById<TextView>(R.id.tv_offline_message)
+        val binding = OfflineBannerBinding.bind(bannerView)
         
         networkUtils.isOnline.observe(viewLifecycleOwner) { isOnline ->
             if (isOnline) {
@@ -26,11 +26,10 @@ class OfflineBannerHelper @Inject constructor(
         }
         
         syncQueueDao.getPendingSyncCount().observe(viewLifecycleOwner) { count ->
-            tvMessage.text = "ऑफलाइन — $count नोंदी sync बाकी"
+            binding.tvOfflineMessage.text = "ऑफलाइन — $count नोंदी sync बाकी"
         }
 
         bannerView.setOnClickListener {
-            // Only navigate if it's currently showing
             if (bannerView.visibility == View.VISIBLE) {
                 try {
                     it.findNavController().navigate(R.id.action_dashboard_to_syncStatus)

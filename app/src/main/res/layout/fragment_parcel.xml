@@ -11,7 +11,7 @@
         style="@style/Widget.App.Toolbar.Green"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="जमीन निवडा"
+        app:title="@string/str_auto_146"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         app:navigationIconTint="@color/text_white" />
 

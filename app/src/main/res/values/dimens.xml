@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Card stroke dimensions for loss type selection -->
+    <dimen name="card_stroke_selected">3dp</dimen>
+    <dimen name="card_stroke_unselected">1dp</dimen>
+
+    <!-- Touch targets -->
+    <dimen name="touch_target">48dp</dimen>
+
+    <!-- Layout margins -->
+    <dimen name="margin_mobile">16dp</dimen>
+    <dimen name="gutter">12dp</dimen>
+    <dimen name="unit">8dp</dimen>
+    <dimen name="base">4dp</dimen>
+
+    <!-- Card corners -->
+    <dimen name="card_corner_small">8dp</dimen>
+    <dimen name="card_corner_medium">12dp</dimen>
+    <dimen name="card_corner_large">16dp</dimen>
+    <dimen name="card_corner_full">9999dp</dimen>
+</resources>

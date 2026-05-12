@@ -3,11 +3,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-    <Button android:id="@+id/btnCaptureGps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Capture GPS" />
+    <Button android:id="@+id/btnCaptureGps" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/str_auto_54" />
     <TextView android:id="@+id/tvGpsStatus" android:layout_width="match_parent" android:layout_height="wrap_content" />
-    <Button android:id="@+id/btnCapturePhoto1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Photo 1" />
+    <Button android:id="@+id/btnCapturePhoto1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/str_auto_55" />
     <ImageView android:id="@+id/ivPhoto1" android:layout_width="100dp" android:layout_height="100dp" />
-    <Button android:id="@+id/btnCapturePhoto2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Photo 2" />
+    <Button android:id="@+id/btnCapturePhoto2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/str_auto_56" />
     <ImageView android:id="@+id/ivPhoto2" android:layout_width="100dp" android:layout_height="100dp" />
-    <Button android:id="@+id/btnNext" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Review" />
+    <Button android:id="@+id/btnNext" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/str_auto_57" />
 </LinearLayout>

@@ -4,32 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.sc.eppCordova.R
 import io.sc.eppCordova.data.local.entity.LandRecord
+import io.sc.eppCordova.databinding.BottomSheetGatDetailBinding
 
 class GatDetailBottomSheet(
     private val landRecord: LandRecord
 ) : BottomSheetDialogFragment() {
 
+    private var _binding: BottomSheetGatDetailBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.bottom_sheet_gat_detail, container, false)
+    ): View {
+        _binding = BottomSheetGatDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         
-        view.findViewById<TextView>(R.id.tv_detail_gat_number).text = "गट क्रमांक: ${landRecord.gutNo}"
-        view.findViewById<TextView>(R.id.tv_detail_area).text = "क्षेत्र: ${landRecord.areaHectares} Ha."
-        view.findViewById<TextView>(R.id.tv_detail_owner).text = "खातेदार: ${landRecord.ownerName}"
+        binding.tvDetailGatNumber.text = "गट क्रमांक: ${landRecord.gutNo}"
+        binding.tvDetailArea.text = "क्षेत्र: ${landRecord.areaHectares} Ha."
+        binding.tvDetailOwner.text = "खातेदार: ${landRecord.ownerName}"
         
-        view.findViewById<Button>(R.id.btn_register_crop).setOnClickListener {
+        binding.btnRegisterCrop.setOnClickListener {
             dismiss()
-            findNavController().navigate(R.id.action_dashboard_to_adminUnit)
+            findNavController().navigate(R.id.action_dashboard_to_landSelection)
         }
-        
-        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

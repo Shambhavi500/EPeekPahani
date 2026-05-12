@@ -11,7 +11,7 @@
         style="@style/Widget.App.Toolbar.Green"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Sync स्थिती"
+        app:title="@string/str_auto_203"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         app:navigationIconTint="@color/text_white" />
 
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📵"
+            android:text="@string/str_auto_199"
             android:textSize="24sp" />
         <LinearLayout
             android:layout_width="0dp"
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ऑफलाइन मोड सक्रिय"
+                android:text="@string/str_auto_200"
                 android:textColor="@color/offline_text"
                 android:textStyle="bold"
                 android:textSize="16sp"/>
@@ -44,7 +44,7 @@
                 android:id="@+id/tv_pending_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 नोंदी sync बाकी"
+                android:text="@string/str_auto_201"
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp"/>
         </LinearLayout>
@@ -53,7 +53,7 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="आत्ता Sync करा"
+            android:text="@string/str_auto_202"
             android:textColor="@color/offline_text" />
     </LinearLayout>
 

@@ -1,52 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary (WhatsApp-green meets Maharashtra-green) -->
-    <color name="green_primary">#1a6b3a</color>
+    <!-- Material Design 3 Colors from DESIGN.md -->
+    <color name="surface">#f7fbf3</color>
+    <color name="surface_dim">#d7dbd4</color>
+    <color name="surface_bright">#f7fbf3</color>
+    <color name="surface_container_lowest">#ffffff</color>
+    <color name="surface_container_low">#f1f5ed</color>
+    <color name="surface_container">#ebefe8</color>
+    <color name="surface_container_high">#e6e9e2</color>
+    <color name="surface_container_highest">#e0e4dd</color>
+    <color name="on_surface">#181d18</color>
+    <color name="on_surface_variant">#404940</color>
+    <color name="inverse_surface">#2d322d</color>
+    <color name="inverse_on_surface">#eef2eb</color>
+    <color name="outline">#707a6f</color>
+    <color name="outline_variant">#bfc9bd</color>
+    <color name="surface_tint">#1b6c3b</color>
+    <color name="primary">#005127</color>
+    <color name="on_primary">#ffffff</color>
+    <color name="primary_container">#1a6b3a</color>
+    <color name="on_primary_container">#99e9ab</color>
+    <color name="inverse_primary">#89d89c</color>
+    <color name="secondary">#48654e</color>
+    <color name="on_secondary">#ffffff</color>
+    <color name="secondary_container">#caebcd</color>
+    <color name="on_secondary_container">#4e6b53</color>
+    <color name="tertiary">#782c39</color>
+    <color name="on_tertiary">#ffffff</color>
+    <color name="tertiary_container">#964350</color>
+    <color name="on_tertiary_container">#ffcacf</color>
+    <color name="error">#ba1a1a</color>
+    <color name="on_error">#ffffff</color>
+    <color name="error_container">#ffdad6</color>
+    <color name="on_error_container">#93000a</color>
+    <color name="background">#f7fbf3</color>
+    <color name="on_background">#181d18</color>
+    <color name="surface_variant">#e0e4dd</color>
+
+    <!-- Additional Brand Colors -->
+    <color name="brand_orange">#f7941d</color>
+    <color name="brand_navy">#003087</color>
+    <color name="brand_blue">#2c538e</color> <!-- Used in Dashboard Quick Actions -->
+
+    <!-- Status Badge Colors -->
+    <color name="status_verified">#2E7D32</color>
+    <color name="status_pending">#FFA000</color>
+    <color name="status_draft">#707a6f</color>
+    
+    <!-- Legacy Mappings for Compatibility until fully refactored -->
+    <color name="green_primary">#005127</color>
     <color name="green_dark">#0f4a27</color>
-    <color name="green_light">#e8f5e9</color>
-    <color name="green_tint">#f0faf2</color>
-
-    <!-- Accent -->
     <color name="saffron">#f7941d</color>
-    <color name="saffron_light">#fff3e0</color>
-    <color name="saffron_dark">#e65100</color>
+    <color name="text_white">#ffffff</color>
+    <color name="text_primary">#181d18</color>
+    <color name="text_secondary">#404940</color>
+    <color name="text_hint">#707a6f</color>
+    <color name="ripple">#33000000</color>
+    <color name="bg_card">#ffffff</color>
+    <color name="status_submitted">#003087</color>
+    <color name="status_rejected">#ba1a1a</color>
+    <color name="green_tint">#e6f0eb</color>
+    <color name="divider">#1f000000</color>
 
-    <!-- Navy -->
-    <color name="navy">#003087</color>
-    <color name="navy_light">#e8eaf6</color>
+    <!-- Screen / Offline UI Colors -->
+    <color name="bg_screen">#F2F6F2</color>
+    <color name="navy_light">#D6E4FF</color>
+    <color name="offline_bg">#FFF3CD</color>
+    <color name="offline_text">#856404</color>
 
-    <!-- Backgrounds -->
-    <color name="bg_screen">#F2F5F1</color>  <!-- warm grey-green like WhatsApp -->
-    <color name="bg_card">#FFFFFF</color>
-    <color name="bg_input">#FAFAFA</color>
-    <color name="bg_chat_ai">#DCF8C6</color>  <!-- WhatsApp green bubble -->
-    <color name="bg_chat_user">#FFFFFF</color>
-
-    <!-- Text -->
-    <color name="text_primary">#1C1C1C</color>
-    <color name="text_secondary">#6B7280</color>
-    <color name="text_hint">#9CA3AF</color>
-    <color name="text_white">#FFFFFF</color>
-    <color name="text_on_green">#FFFFFF</color>
-
-    <!-- Status -->
-    <color name="status_pending">#9E9E9E</color>
-    <color name="status_draft">#FF9800</color>
-    <color name="status_submitted">#2196F3</color>
-    <color name="status_verified">#4CAF50</color>
-    <color name="status_rejected">#F44336</color>
-
-    <!-- Functional -->
-    <color name="error">#B00020</color>
-    <color name="warning">#FFA000</color>
-    <color name="success">#2E7D32</color>
-    <color name="offline_bg">#FFF8E1</color>
-    <color name="offline_text">#F57F17</color>
-    <color name="divider">#E5E7EB</color>
-    <color name="ripple">#1a1a6b3a</color>
-
-    <!-- Geofence states -->
-    <color name="geofence_pass_bg">#E8F5E9</color>
-    <color name="geofence_fail_bg">#FFEBEE</color>
-    <color name="geofence_warn_bg">#FFF8E1</color>
 </resources>

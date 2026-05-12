@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -39,8 +40,43 @@ class ProfileFragment : Fragment() {
                 binding.tvFarmerName.text = farmer.name
                 binding.tvAvatarInitials.text = farmer.name.take(1)
                 binding.tvMobile.text = farmer.mobile
-                binding.tvAddress.text = "नाशिक | निफाड | ओझर"
+                
+                // Populate from CSV data if available
+                val village = farmer.village.takeIf { it.isNotEmpty() } ?: "अज्ञात"
+                val taluka = farmer.taluka.takeIf { it.isNotEmpty() } ?: "अज्ञात"
+                val district = farmer.district.takeIf { it.isNotEmpty() } ?: "अज्ञात"
+                binding.tvAddress.text = "$village | $taluka | $district"
+                
+                if (farmer.aadhaarMasked.isNotEmpty()) {
+                    binding.tvAadhaar.text = farmer.aadhaarMasked
+                }
+                
+                binding.tvKhasra.text = farmer.khasraNumber.takeIf { it.isNotEmpty() } ?: "N/A"
+                binding.tvLandArea.text = farmer.landHoldingHa.takeIf { it.isNotEmpty() } ?: "N/A"
+                binding.tvLandType.text = farmer.landType.takeIf { it.isNotEmpty() } ?: "N/A"
+                binding.tvSoilType.text = farmer.soilType.takeIf { it.isNotEmpty() } ?: "N/A"
+                binding.tvIrrigation.text = farmer.irrigationSource.takeIf { it.isNotEmpty() } ?: "N/A"
+                val crops = listOf(farmer.primaryCrop, farmer.secondaryCrop).filter { it.isNotEmpty() && it != "None" }.joinToString(", ")
+                binding.tvCrops.text = crops.takeIf { it.isNotEmpty() } ?: "N/A"
+                binding.tvKcc.text = farmer.hasKcc.takeIf { it.isNotEmpty() } ?: "N/A"
             }
+        }
+
+        // Set current language text
+        val currentLocales = AppCompatDelegate.getApplicationLocales()
+        if (!currentLocales.isEmpty) {
+            when (currentLocales.get(0)?.language) {
+                "hi" -> binding.tvCurrentLanguage.text = "हिंदी"
+                "en" -> binding.tvCurrentLanguage.text = "English"
+                else -> binding.tvCurrentLanguage.text = "मराठी"
+            }
+        } else {
+            binding.tvCurrentLanguage.text = "मराठी"
+        }
+
+        // Language setting click listener
+        binding.llLanguage.setOnClickListener {
+            findNavController().navigate(R.id.languageFragment)
         }
 
         binding.btnLogout.setOnClickListener {

@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="पीक पेरा प्रमाणपत्र"
+            android:text="@string/str_auto_6"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#1a6b3a" />
@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Digital Crop Sowing Certificate"
+            android:text="@string/str_auto_7"
             android:textSize="14sp"
             android:textColor="#6B7280"
             android:layout_marginBottom="24dp" />
@@ -48,19 +48,19 @@
             android:layout_marginBottom="24dp">
 
             <TableRow android:layout_marginBottom="8dp">
-                <TextView android:text="शेतकरी नाव:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:text="@string/str_auto_8" android:textColor="#6B7280" android:paddingEnd="16dp" />
                 <TextView android:id="@+id/tv_cert_farmer_name" android:textStyle="bold" android:textColor="#1C1C1C" />
             </TableRow>
             <TableRow android:layout_marginBottom="8dp">
-                <TextView android:text="गट क्रमांक:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:text="@string/str_auto_9" android:textColor="#6B7280" android:paddingEnd="16dp" />
                 <TextView android:id="@+id/tv_cert_gat" android:textStyle="bold" android:textColor="#1C1C1C" />
             </TableRow>
             <TableRow android:layout_marginBottom="8dp">
-                <TextView android:text="घोषित पीक:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:text="@string/str_auto_10" android:textColor="#6B7280" android:paddingEnd="16dp" />
                 <TextView android:id="@+id/tv_cert_crop" android:textStyle="bold" android:textColor="#1C1C1C" />
             </TableRow>
             <TableRow android:layout_marginBottom="8dp">
-                <TextView android:text="AI-सत्यापित पीक:" android:textColor="#6B7280" android:paddingEnd="16dp" />
+                <TextView android:text="@string/str_auto_11" android:textColor="#6B7280" android:paddingEnd="16dp" />
                 <TextView android:id="@+id/tv_cert_ai_crop" android:textStyle="bold" android:textColor="#1C1C1C" />
             </TableRow>
         </TableLayout>
@@ -69,7 +69,7 @@
             android:id="@+id/chip_ai_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AI Verified"
+            android:text="@string/str_auto_12"
             android:textColor="@android:color/white"
             app:chipBackgroundColor="#2E7D32"
             android:layout_marginBottom="24dp"/>
@@ -83,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Digitally Signed (Mock)"
+            android:text="@string/str_auto_13"
             android:textColor="#B00020"
             android:textSize="12sp"
             android:textStyle="italic"
@@ -93,7 +93,7 @@
             android:id="@+id/fab_download"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="डाउनलोड करा"
+            android:text="@string/str_auto_14"
             android:textColor="@android:color/white"
             app:backgroundTint="#f7941d"
             app:icon="@android:drawable/ic_menu_save"
@@ -105,7 +105,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="शेअर करा"
+            android:text="@string/str_auto_15"
             android:textColor="#003087"
             app:strokeColor="#003087"/>
 
