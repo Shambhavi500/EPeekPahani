@@ -16,7 +16,7 @@ class ProcessingFragment : Fragment() {
     private var _binding: FragmentProcessingBinding? = null
     private val binding get() = _binding!!
 
-    override.onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -24,7 +24,7 @@ class ProcessingFragment : Fragment() {
         return binding.root
     }
 
-    override.onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val steps = listOf(
@@ -51,7 +51,7 @@ class ProcessingFragment : Fragment() {
         handler.postDelayed(runnable, 1000)
     }
 
-    override.onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

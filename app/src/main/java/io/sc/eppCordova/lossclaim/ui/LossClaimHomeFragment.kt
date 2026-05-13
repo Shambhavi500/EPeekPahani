@@ -21,7 +21,7 @@ class LossClaimHomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: LossClaimViewModel by activityViewModels()
 
-    override.onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -29,7 +29,7 @@ class LossClaimHomeFragment : Fragment() {
         return binding.root
     }
 
-    override.onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Mock load farmer
@@ -66,7 +66,7 @@ class LossClaimHomeFragment : Fragment() {
         }
     }
 
-    override.onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

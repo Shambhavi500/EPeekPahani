@@ -68,4 +68,8 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_white</item>
     </style>
+    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">12dp</item>
+    </style>
 </resources>

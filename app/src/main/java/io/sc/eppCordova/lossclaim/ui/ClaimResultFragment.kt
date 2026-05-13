@@ -16,7 +16,7 @@ class ClaimResultFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: LossClaimViewModel by activityViewModels()
 
-    override.onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -24,7 +24,7 @@ class ClaimResultFragment : Fragment() {
         return binding.root
     }
 
-    override.onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Mock AI output based on damage type
@@ -42,7 +42,7 @@ class ClaimResultFragment : Fragment() {
         }
     }
 
-    override.onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

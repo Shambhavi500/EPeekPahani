@@ -43,7 +43,7 @@ class CameraSurveyFragment : Fragment() {
         }
     }
 
-    override.onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -51,7 +51,7 @@ class CameraSurveyFragment : Fragment() {
         return binding.root
     }
 
-    override.onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -76,11 +76,11 @@ class CameraSurveyFragment : Fragment() {
             outputOptions,
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
-                override.onError(exc: ImageCaptureException) {
+                override fun onError(exc: ImageCaptureException) {
                     Toast.makeText(requireContext(), "Photo failed", Toast.LENGTH_SHORT).show()
                 }
 
-                override.onImageSaved(output: ImageCapture.OutputFileResults) {
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     Toast.makeText(requireContext(), "Image Captured", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_camera_to_processing)
                 }
@@ -111,7 +111,7 @@ class CameraSurveyFragment : Fragment() {
         requireContext(), Manifest.permission.CAMERA
     ) == PackageManager.PERMISSION_GRANTED
 
-    override.onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         cameraExecutor.shutdown()
         _binding = null
