@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import io.sc.eppCordova.R
 import io.sc.eppCordova.databinding.FragmentDashboardBinding
@@ -20,7 +21,6 @@ class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DashboardViewModel by viewModels()
-    private lateinit var adapter: GatListAdapter
 
     @Inject
     lateinit var networkUtils: NetworkUtils
@@ -37,13 +37,11 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupOfflineBanner()
-        setupRecyclerView()
         setupClickListeners()
         observeData()
     }
 
     private fun setupOfflineBanner() {
-        // Show/hide offline banner based on connectivity
         val isOnline = networkUtils.isOnline.value == true
         binding.layoutOfflineBanner.visibility = if (isOnline) View.GONE else View.VISIBLE
         binding.btnDismissOffline.setOnClickListener {
@@ -51,35 +49,9 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun setupRecyclerView() {
-        adapter = GatListAdapter { gatItem ->
-            val bottomSheet = GatDetailBottomSheet(gatItem.landRecord)
-            bottomSheet.show(parentFragmentManager, "GatDetailBottomSheet")
-        }
-        binding.rvGatNumbers.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvGatNumbers.adapter = adapter
-    }
-
     private fun setupClickListeners() {
-        // Farmer avatar → profile
-        binding.ivFarmerAvatar.setOnClickListener {
+        binding.cardFarmerInfo.setOnClickListener {
             findNavController().navigate(R.id.action_dashboard_to_profile)
-        }
-
-        // See all gat numbers
-        binding.btnSeeAllGat.setOnClickListener {
-            // Register idea removed
-        }
-
-        // Quick actions
-
-
-        binding.cardMyCertificate.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboard_to_certificate)
-        }
-
-        binding.cardLossComplaint.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboard_to_lossClaim)
         }
     }
 
@@ -87,12 +59,39 @@ class DashboardFragment : Fragment() {
         viewModel.farmerData.observe(viewLifecycleOwner) { farmer ->
             farmer?.let {
                 binding.tvFarmerName.text = it.name
-                binding.tvFarmerLocation.text = "नाशिक | निफाड | ओझर"
+                binding.tvFarmerVillage.text = it.village
+                binding.tvFarmerTaluka.text = it.taluka
+                binding.tvFarmerDistrict.text = it.district
+                binding.tvFarmerState.text = it.state
+                binding.tvFarmerPincode.text = it.pincode
             }
         }
 
-        viewModel.gatList.observe(viewLifecycleOwner) { items ->
-            adapter.submitList(items)
+        viewModel.cropDetail.observe(viewLifecycleOwner) { crop ->
+            binding.tvCropMainCrop.text = crop.mainCrop.ifBlank { "--" }
+            binding.tvCropSeason.text = crop.season.ifBlank { "--" }
+            binding.tvCropIrrigation.text = crop.irrigation.ifBlank { "--" }
+            binding.tvCropArea.text = crop.area.ifBlank { "--" }
+        }
+
+        viewModel.schemes.observe(viewLifecycleOwner) { schemes ->
+            binding.chipGroupSchemes.removeAllViews()
+            if (schemes.isEmpty()) {
+                binding.tvSchemesEmpty.isVisible = true
+            } else {
+                binding.tvSchemesEmpty.isVisible = false
+                schemes.forEach { scheme ->
+                    val chip = Chip(requireContext()).apply {
+                        text = scheme
+                        isClickable = false
+                        isCheckable = false
+                        setChipBackgroundColorResource(R.color.primary_container)
+                        setTextColor(resources.getColor(R.color.on_primary, null))
+                        chipCornerRadius = resources.getDimension(R.dimen.card_corner_full)
+                    }
+                    binding.chipGroupSchemes.addView(chip)
+                }
+            }
         }
     }
 
@@ -100,6 +99,7 @@ class DashboardFragment : Fragment() {
         super.onResume()
         viewModel.loadData()
         setupOfflineBanner()
+        requireActivity().title = getString(R.string.str_dashboard_title)
     }
 
     override fun onDestroyView() {
