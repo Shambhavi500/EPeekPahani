@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_splash_to_language"
             app:destination="@id/languageFragment"
-            app:popUpTo="@id/nav_graph"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -92,7 +92,7 @@
             android:id="@+id/action_profile_to_login"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -143,7 +143,7 @@
             android:id="@+id/action_lossClaimStep4_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -155,7 +155,7 @@
             android:id="@+id/action_lossClaimStep5_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_lossClaimStep5_to_myClaims"
             app:destination="@id/myClaimsFragment" />
@@ -232,7 +232,7 @@
             android:id="@+id/action_success_to_dashboard"
             app:destination="@id/dashboardFragment"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
 </navigation>

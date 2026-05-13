@@ -42,8 +42,8 @@
         android:layout_gravity="bottom"
         android:background="@color/surface"
         app:menu="@menu/menu_bottom_nav"
-        app:itemIconTint="@drawable/selector_nav_icon"
-        app:itemTextColor="@drawable/selector_nav_text"
+        app:itemIconTint="@color/selector_nav_icon"
+        app:itemTextColor="@color/selector_nav_text"
         app:labelVisibilityMode="labeled"
         app:elevation="8dp" />
 

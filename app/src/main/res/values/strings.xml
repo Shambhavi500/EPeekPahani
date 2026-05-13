@@ -231,4 +231,12 @@
     <string name="lang_hindi">हिंदी</string>
     <string name="lang_english">English</string>
     <string name="btn_continue">Proceed →</string>
+    
+    <!-- Dummy Firebase IDs to prevent crash since google-services.json is missing -->
+    <string name="google_app_id">1:1234567890:android:abcdef123456</string>
+    <string name="gcm_defaultSenderId">1234567890</string>
+    <string name="default_web_client_id">1234567890-abcdef.apps.googleusercontent.com</string>
+    <string name="google_api_key">AIzaSyDummyKey</string>
+    <string name="google_crash_reporting_api_key">AIzaSyDummyKey</string>
+    <string name="project_id">dummy-project</string>
 </resources>
