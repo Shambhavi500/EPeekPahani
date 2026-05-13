@@ -68,12 +68,12 @@ class DashboardFragment : Fragment() {
 
         // See all gat numbers
         binding.btnSeeAllGat.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboard_to_landSelection)
+            // Register idea removed
         }
 
         // Quick actions
         binding.cardNewRegistration.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboard_to_landSelection)
+            // Register idea removed
         }
 
         binding.cardMyCertificate.setOnClickListener {

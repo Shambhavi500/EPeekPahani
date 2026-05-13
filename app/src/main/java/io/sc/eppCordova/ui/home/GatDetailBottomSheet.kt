@@ -34,7 +34,7 @@ class GatDetailBottomSheet(
         
         binding.btnRegisterCrop.setOnClickListener {
             dismiss()
-            findNavController().navigate(R.id.action_dashboard_to_landSelection)
+            // Register idea removed
         }
     }
 

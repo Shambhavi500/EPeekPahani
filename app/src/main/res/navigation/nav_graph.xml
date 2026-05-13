@@ -57,9 +57,6 @@
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_dashboard_to_landSelection"
-            app:destination="@id/landSelectionFragment" />
-        <action
             android:id="@+id/action_dashboard_to_certificate"
             app:destination="@id/certificateFragment" />
         <action
@@ -71,16 +68,6 @@
         <action
             android:id="@+id/action_dashboard_to_syncStatus"
             app:destination="@id/syncStatusFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/landSelectionFragment"
-        android:name="io.sc.eppCordova.ui.land.ParcelFragment"
-        android:label="Select Gat"
-        tools:layout="@layout/fragment_land_selection">
-        <action
-            android:id="@+id/action_landSelection_to_cropForm"
-            app:destination="@id/cropFormFragment" />
     </fragment>
 
     <fragment
@@ -182,57 +169,6 @@
         android:name="io.sc.eppCordova.ui.certificate.CertificateFragment"
         android:label="Certificate"
         tools:layout="@layout/fragment_certificate">
-    </fragment>
-
-    <fragment
-        android:id="@+id/cropFormFragment"
-        android:name="io.sc.eppCordova.ui.crop.CropFormFragment"
-        android:label="Crop Form"
-        tools:layout="@layout/fragment_crop_form">
-        <action
-            android:id="@+id/action_cropForm_to_gpsPhoto"
-            app:destination="@id/gpsPhotoFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/gpsPhotoFragment"
-        android:name="io.sc.eppCordova.ui.geotag.GpsPhotoFragment"
-        android:label="GPS and Photo"
-        tools:layout="@layout/fragment_gps_photo">
-        <action
-            android:id="@+id/action_gpsPhoto_to_review"
-            app:destination="@id/reviewFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/reviewFragment"
-        android:name="io.sc.eppCordova.ui.review.ReviewFragment"
-        android:label="Review"
-        tools:layout="@layout/fragment_review">
-        <action
-            android:id="@+id/action_review_to_success"
-            app:destination="@id/successFragment"
-            app:popUpTo="@id/landSelectionFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/successFragment"
-        android:name="io.sc.eppCordova.ui.review.SuccessFragment"
-        android:label="Success"
-        tools:layout="@layout/fragment_success">
-        <action
-            android:id="@+id/action_success_to_landSelection"
-            app:destination="@id/landSelectionFragment"
-            app:popUpTo="@id/landSelectionFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_success_to_certificate"
-            app:destination="@id/certificateFragment" />
-        <action
-            android:id="@+id/action_success_to_dashboard"
-            app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="false" />
     </fragment>
 
 </navigation>

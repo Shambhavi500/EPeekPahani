@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         // Top-level destinations (no back button shown)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.dashboardFragment, R.id.landSelectionFragment, R.id.lossClaimStep1Fragment, R.id.profileFragment)
+            setOf(R.id.dashboardFragment, R.id.lossClaimStep1Fragment, R.id.profileFragment)
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
