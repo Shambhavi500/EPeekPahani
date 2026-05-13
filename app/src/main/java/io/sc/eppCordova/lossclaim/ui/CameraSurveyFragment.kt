@@ -33,6 +33,9 @@ class CameraSurveyFragment : Fragment() {
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
 
+    private var currentStep = 1
+    private val totalSteps = 5
+
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
@@ -62,15 +65,54 @@ class CameraSurveyFragment : Fragment() {
             requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
 
-        binding.fabCapture.setOnClickListener {
-            takePhoto()
+        updateUiForStep()
+
+        binding.btnNextStep.setOnClickListener {
+            if (currentStep < totalSteps) {
+                currentStep++
+                updateUiForStep()
+            } else {
+                takePhoto()
+            }
+        }
+    }
+
+    private fun updateUiForStep() {
+        binding.tvStepProgress.text = "Step $currentStep of $totalSteps"
+        
+        when (currentStep) {
+            1 -> {
+                binding.tvAiInstruction.text = "Please point the camera towards your field."
+                binding.btnNextStep.text = "Done"
+            }
+            2 -> {
+                binding.tvAiInstruction.text = "Walk slowly along one row so I can see the full crop."
+                binding.btnNextStep.text = "I am walking"
+            }
+            3 -> {
+                binding.tvAiInstruction.text = "I see flooding. Was water above the base of the plants?"
+                binding.btnNextStep.text = "Yes, it was"
+            }
+            4 -> {
+                binding.tvAiInstruction.text = "Approximately what percentage of your crop is damaged?"
+                binding.btnNextStep.text = "Around 50%" // Mocking slider response
+            }
+            5 -> {
+                binding.tvAiInstruction.text = "Is any part of the crop still harvestable?"
+                binding.btnNextStep.text = "Capture Evidence & Complete"
+            }
         }
     }
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
+        
+        @Suppress("DEPRECATION")
         val photoFile = File(requireContext().externalMediaDirs.firstOrNull(), "loss_claim_${System.currentTimeMillis()}.jpg")
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+
+        binding.btnNextStep.isEnabled = false
+        binding.btnNextStep.text = "Capturing..."
 
         imageCapture.takePicture(
             outputOptions,
@@ -78,10 +120,11 @@ class CameraSurveyFragment : Fragment() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Toast.makeText(requireContext(), "Photo failed", Toast.LENGTH_SHORT).show()
+                    binding.btnNextStep.isEnabled = true
+                    binding.btnNextStep.text = "Retry Capture"
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    Toast.makeText(requireContext(), "Image Captured", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_camera_to_processing)
                 }
             }

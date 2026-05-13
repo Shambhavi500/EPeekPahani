@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -32,36 +30,24 @@ class LossClaimHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Mock load farmer
+        // Mock load farmer (in reality from SharedViewModel after OTP)
         viewModel.loadFarmerData("9876543210")
+        
+        // Auto-detect disaster based on weather (PDF says "Pre-populates the disaster type suggestion")
+        viewModel.setDamageType("Flood") // Simulating auto-detection
 
         lifecycleScope.launch {
             viewModel.currentFarmer.collect { farmer ->
                 farmer?.let {
-                    val gatInfo = listOf("Gat ${it.gatNumber} - ${it.crop} - ${it.area}")
-                    val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, gatInfo)
-                    binding.spinnerGat.adapter = adapter
+                    binding.tvFarmerName.text = "Name: ${it.farmerName}"
+                    binding.tvGatCrop.text = "Gat: ${it.gatNumber} | Crop: ${it.crop}"
+                    binding.tvInsurance.text = "Insurance: PMFBY Active"
+                    binding.tvDisasterType.text = "Suggested Disaster: Flood (Auto-detected)"
                 }
             }
         }
 
-        binding.cardFlood.setOnClickListener {
-            viewModel.setDamageType("Flood")
-            binding.cardFlood.strokeWidth = 4
-            binding.cardDrought.strokeWidth = 0
-        }
-
-        binding.cardDrought.setOnClickListener {
-            viewModel.setDamageType("Drought")
-            binding.cardDrought.strokeWidth = 4
-            binding.cardFlood.strokeWidth = 0
-        }
-
         binding.btnStartSurvey.setOnClickListener {
-            if (viewModel.selectedDamageType.value.isEmpty()) {
-                Toast.makeText(requireContext(), "Please select a damage type", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             findNavController().navigate(R.id.action_home_to_camera)
         }
     }
