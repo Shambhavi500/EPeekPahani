@@ -224,6 +224,22 @@
     <string name="str_auto_222">Loss Claim</string>
     <string name="str_auto_223">Profile</string>
 
+    <!-- Dashboard Redesign Strings -->
+    <string name="str_dashboard_title">Dashboard</string>
+    <string name="str_dashboard_village">Village:</string>
+    <string name="str_dashboard_taluka">Taluka:</string>
+    <string name="str_dashboard_district">District:</string>
+    <string name="str_dashboard_state">State:</string>
+    <string name="str_dashboard_pincode">Pincode:</string>
+    <string name="str_dashboard_crop_details">Crop Details</string>
+    <string name="str_dashboard_main_crop">Main Crop:</string>
+    <string name="str_dashboard_season">Season:</string>
+    <string name="str_dashboard_irrigation">Irrigation:</string>
+    <string name="str_dashboard_area">Area:</string>
+    <string name="str_dashboard_schemes">Schemes Enrolled</string>
+    <string name="str_dashboard_no_schemes">No schemes enrolled</string>
+    <string name="str_dashboard_loss_claims">Loss Claims</string>
+
     <string name="app_name">E-Peek Pahani</string>
     <string name="title_select_language">Select Language</string>
     <string name="subtitle_select_language">Select Your Language</string>

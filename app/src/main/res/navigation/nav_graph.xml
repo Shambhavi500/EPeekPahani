@@ -57,9 +57,6 @@
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_dashboard_to_certificate"
-            app:destination="@id/certificateFragment" />
-        <action
             android:id="@+id/action_dashboard_to_lossClaim"
             app:destination="@id/lossClaimStep1Fragment" />
         <action
