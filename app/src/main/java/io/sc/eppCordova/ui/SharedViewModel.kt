@@ -9,6 +9,7 @@ import io.sc.eppCordova.data.local.entity.AdminUnit
 import io.sc.eppCordova.data.local.entity.CropRecord
 import io.sc.eppCordova.data.local.entity.Farmer
 import io.sc.eppCordova.data.local.entity.LandRecord
+import io.sc.eppCordova.data.repository.AuthRepository
 import io.sc.eppCordova.data.repository.CropRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,7 +41,8 @@ sealed class UiState {
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val repository: CropRepository
+    private val repository: CropRepository,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _farmerState = MutableLiveData<Farmer>()
@@ -75,10 +77,16 @@ class SharedViewModel @Inject constructor(
     suspend fun getTalukas(district: String) = repository.getTalukas(district)
     suspend fun getVillages(taluka: String) = repository.getVillages(taluka)
 
-    fun sendOtp(mobile: String, onResult: (Boolean) -> Unit) {
+    fun sendOtp(mobile: String, onResult: (Boolean, Farmer?) -> Unit) {
         viewModelScope.launch {
-            val result = repository.sendOtp(mobile)
-            onResult(result)
+            val farmer = authRepository.findFarmerByMobile(mobile)
+            if (farmer != null) {
+                _farmerState.value = farmer
+                val result = repository.sendOtp(mobile)
+                onResult(true, farmer)
+            } else {
+                onResult(false, null)
+            }
         }
     }
 

@@ -1,68 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_green">
+    android:background="@drawable/bg_splash_gradient">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:paddingBottom="80dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_wheat" />
+            android:id="@+id/iv_logo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/ic_splash_emblem"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/app_name" />
 
         <TextView
+            android:id="@+id/tv_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ई-पीक पाहणी"
-            android:textColor="@color/text_white"
-            android:textSize="28sp"
+            android:text="@string/str_auto_173"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="32dp" />
 
         <TextView
+            android:id="@+id/tv_tagline_mr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="स्मार्ट कृषी सर्वेक्षण | Smart AgriStack"
-            android:textColor="#B3FFFFFF"
-            android:textSize="14sp"
+            android:text="@string/str_auto_174"
+            android:textColor="#E0FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tv_tagline_en"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_auto_175"
+            android:textColor="#B0FFFFFF"
+            android:textSize="12sp"
+            android:letterSpacing="0.15"
             android:layout_marginTop="4dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="80dp"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginBottom="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:gravity="center">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="64dp"
-            android:indeterminate="true"
-            app:indicatorColor="@color/text_white"
-            app:trackColor="#4DFFFFFF"/>
+        <ProgressBar
+            android:id="@+id/progress_loading"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="140dp"
+            android:layout_height="4dp"
+            android:max="100"
+            android:progress="60"
+            android:progressTint="#FFFFFF"
+            android:progressBackgroundTint="#33FFFFFF" />
 
         <TextView
+            android:id="@+id/tv_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="आवृत्ती 2.0 | महाराष्ट्र शासन"
-            android:textColor="#80FFFFFF"
-            android:textSize="11sp"
-            android:layout_marginTop="12dp" />
+            android:text="@string/str_auto_176"
+            android:textColor="#99FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_gov_branding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:text="@string/str_auto_177"
+        android:textColor="#66FFFFFF"
+        android:textSize="12sp" />
+
+</FrameLayout>

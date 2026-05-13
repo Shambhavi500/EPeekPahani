@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="गट तपशील"
+        android:text="@string/str_auto_4"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -41,7 +41,7 @@
         android:id="@+id/btn_register_crop"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="पीक नोंदणी करा"
+        android:text="@string/str_auto_5"
         android:textColor="@android:color/white"
         app:backgroundTint="#1a6b3a"
         app:cornerRadius="8dp" />

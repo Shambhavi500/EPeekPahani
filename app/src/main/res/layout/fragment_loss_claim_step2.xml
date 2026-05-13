@@ -47,7 +47,7 @@
                 android:id="@+id/tv_geofence_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GPS शोधत आहे..."
+                android:text="@string/str_auto_104"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -64,7 +64,7 @@
                 android:id="@+id/tv_geofence_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="कृपया शेतात उभे राहा"
+                android:text="@string/str_auto_105"
                 android:textSize="12sp"
                 android:gravity="center"
                 android:layout_marginTop="8dp" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:visibility="gone"
-                android:text="तलाठी सहाय्य QR कोड मिळवा"
+                android:text="@string/str_auto_106"
                 app:backgroundTint="#f7941d" />
 
         </LinearLayout>
@@ -90,7 +90,7 @@
         android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="पुढे →"
+        android:text="@string/str_auto_107"
         android:enabled="false"
         app:backgroundTint="#1a6b3a"
         app:cornerRadius="8dp" />

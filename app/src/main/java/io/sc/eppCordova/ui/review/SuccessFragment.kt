@@ -28,16 +28,25 @@ class SuccessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val district = sharedViewModel.selectedAdminUnit.value?.district?.uppercase() ?: "PUNE"
-        val refNum = "DCS2025-$district-${Random.nextInt(1000, 9999)}"
-        binding.tvReference.text = "संदर्भ क्रमांक: $refNum"
+        val refNum = "REG-2025-$district-${Random.nextInt(100, 999)}-001"
+        binding.tvReferenceId.text = refNum
 
-        binding.btnNew.setOnClickListener {
+        val farmer = sharedViewModel.farmerState.value
+        val land = sharedViewModel.selectedLandRecord.value
+        val crop = sharedViewModel.cropFormData.value
+
+        binding.tvCertFarmerName.text = farmer?.name ?: "शेतकरी"
+        binding.tvCertGat.text = "${land?.gutNo}"
+        binding.tvCertCrop.text = "${crop?.cropName}"
+        binding.tvCertSeason.text = "${crop?.season ?: "खरीप २०२५"}"
+
+        binding.btnNewGatRegistration.setOnClickListener {
             sharedViewModel.resetState()
-            findNavController().navigate(R.id.action_success_to_adminUnit)
+            // Navigate back to adminUnit (which is now LandSelection in nav_graph)
+            findNavController().navigate(R.id.action_success_to_landSelection)
         }
 
-        binding.btnRecords.text = "प्रमाणपत्र पाहा"
-        binding.btnRecords.setOnClickListener {
+        binding.btnViewCertificate.setOnClickListener {
             findNavController().navigate(R.id.action_success_to_certificate)
         }
     }

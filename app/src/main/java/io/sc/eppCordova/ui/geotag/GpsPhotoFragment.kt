@@ -3,17 +3,11 @@ package io.sc.eppCordova.ui.geotag
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -23,11 +17,11 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.sc.eppCordova.R
+import io.sc.eppCordova.databinding.FragmentGpsPhotoBinding
 import io.sc.eppCordova.ui.SharedViewModel
 import io.sc.eppCordova.utils.GeoFenceEngine
 import io.sc.eppCordova.utils.GeoFenceResult
 import io.sc.eppCordova.utils.MatchStatus
-import io.sc.eppCordova.utils.OfflineBannerHelper
 import io.sc.eppCordova.utils.TFLiteCropDetector
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -35,6 +29,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class GpsPhotoFragment : Fragment() {
 
+    private var _binding: FragmentGpsPhotoBinding? = null
+    private val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     @Inject
@@ -42,9 +38,6 @@ class GpsPhotoFragment : Fragment() {
 
     @Inject
     lateinit var tfLiteCropDetector: TFLiteCropDetector
-    
-    @Inject
-    lateinit var offlineBannerHelper: OfflineBannerHelper
 
     private var currentPhotoIndex = 1
     private var isGeoFencePassed = false
@@ -57,39 +50,39 @@ class GpsPhotoFragment : Fragment() {
             }
         }
 
-    private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
-        if (success) {
-            handlePhotoCaptured()
-        }
-    }
-
-    private var tempUri: Uri? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_gps_photo, container, false)
-        offlineBannerHelper.attach(view.findViewById(R.id.offline_banner), viewLifecycleOwner)
-        setupViews(view)
-        checkPermissionsAndStart()
-        return view
+    ): View {
+        _binding = FragmentGpsPhotoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    private fun setupViews(view: View) {
-        view.findViewById<Button>(R.id.btn_photo_1).setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+        checkPermissionsAndStart()
+    }
+
+    private fun setupViews() {
+        binding.cardPhoto1.setOnClickListener {
             currentPhotoIndex = 1
             launchCamera()
         }
-        view.findViewById<Button>(R.id.btn_photo_2).setOnClickListener {
+        binding.cardPhoto2.setOnClickListener {
             currentPhotoIndex = 2
             launchCamera()
         }
-        view.findViewById<Button>(R.id.btn_photo_3).setOnClickListener {
+        binding.cardPhoto3.setOnClickListener {
             currentPhotoIndex = 3
             launchCamera()
         }
-        view.findViewById<Button>(R.id.btn_next).setOnClickListener {
+        
+        binding.btnStep3Prev.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.btnStep3Next.setOnClickListener {
             findNavController().navigate(R.id.action_gpsPhoto_to_review)
         }
     }
@@ -113,60 +106,53 @@ class GpsPhotoFragment : Fragment() {
     }
 
     private fun updateGeoFenceUI(result: GeoFenceResult) {
-        val tvStatus = view?.findViewById<TextView>(R.id.tv_geofence_status)
-        val tvDetail = view?.findViewById<TextView>(R.id.tv_geofence_detail)
-        val pb = view?.findViewById<ProgressBar>(R.id.pb_geofence)
-        
         when (result) {
             is GeoFenceResult.Loading -> {
-                tvStatus?.text = "GPS शोधत आहे..."
-                tvStatus?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
-                pb?.visibility = View.VISIBLE
+                binding.tvGeoStatusTitle.text = "GPS शोधत आहे..."
+                binding.tvGeoStatusTitle.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
+                binding.tvGeoStatusDesc.text = "स्थान तपासत आहे"
             }
             is GeoFenceResult.Pass -> {
                 isGeoFencePassed = true
-                tvStatus?.text = "✅ शेतात आहात"
-                tvStatus?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.holo_green_dark))
-                tvDetail?.text = "GPS अचूकता: ±${result.accuracyMetres.toInt()}m"
-                pb?.visibility = View.GONE
+                binding.tvGeoStatusTitle.text = "✅ आपण आपल्या शेतात आहात"
+                binding.tvGeoStatusTitle.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.holo_green_dark))
+                binding.tvGeoStatusDesc.text = "GPS अचूकता: ±${result.accuracyMetres.toInt()}m"
                 enableCameraButtons()
             }
             is GeoFenceResult.Fail -> {
                 isGeoFencePassed = false
-                tvStatus?.text = "🔒 आपण शेताबाहेर आहात"
-                tvStatus?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark))
-                tvDetail?.text = "अंतर: ~${result.distanceMetres.toInt()} मीटर"
-                pb?.visibility = View.GONE
+                binding.tvGeoStatusTitle.text = "🔒 आपण शेताबाहेर आहात"
+                binding.tvGeoStatusTitle.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark))
+                binding.tvGeoStatusDesc.text = "अंतर: ~${result.distanceMetres.toInt()} मीटर"
                 disableCameraButtons()
             }
             is GeoFenceResult.AccuracyTooLow -> {
-                tvStatus?.text = "GPS सिग्नल सुधारत आहे"
-                tvDetail?.text = "मोकळ्या जागी जा"
-                pb?.visibility = View.VISIBLE
+                binding.tvGeoStatusTitle.text = "GPS सिग्नल सुधारत आहे"
+                binding.tvGeoStatusDesc.text = "मोकळ्या जागी जा"
             }
             is GeoFenceResult.GpsUnavailable -> {
-                tvStatus?.text = "GPS उपलब्ध नाही"
-                pb?.visibility = View.GONE
+                binding.tvGeoStatusTitle.text = "GPS उपलब्ध नाही"
+                binding.tvGeoStatusDesc.text = "कृपया GPS चालू करा"
             }
             is GeoFenceResult.MockLocationDetected -> {
-                tvStatus?.text = "Mock location आढळले"
-                tvStatus?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark))
-                pb?.visibility = View.GONE
+                binding.tvGeoStatusTitle.text = "Mock location आढळले"
+                binding.tvGeoStatusTitle.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.holo_red_dark))
+                binding.tvGeoStatusDesc.text = "बनावट स्थान वापरण्यास मनाई आहे"
                 disableCameraButtons()
             }
         }
     }
 
     private fun enableCameraButtons() {
-        view?.findViewById<Button>(R.id.btn_photo_1)?.isEnabled = true
-        if (!sharedViewModel.gpsData.value?.photo1Uri.isNullOrEmpty()) view?.findViewById<Button>(R.id.btn_photo_2)?.isEnabled = true
-        if (!sharedViewModel.gpsData.value?.photo2Uri.isNullOrEmpty()) view?.findViewById<Button>(R.id.btn_photo_3)?.isEnabled = true
+        binding.cardPhoto1.isEnabled = true
+        if (!sharedViewModel.gpsData.value?.photo1Uri.isNullOrEmpty()) binding.cardPhoto2.isEnabled = true
+        if (!sharedViewModel.gpsData.value?.photo2Uri.isNullOrEmpty()) binding.cardPhoto3.isEnabled = true
     }
 
     private fun disableCameraButtons() {
-        view?.findViewById<Button>(R.id.btn_photo_1)?.isEnabled = false
-        view?.findViewById<Button>(R.id.btn_photo_2)?.isEnabled = false
-        view?.findViewById<Button>(R.id.btn_photo_3)?.isEnabled = false
+        binding.cardPhoto1.isEnabled = false
+        binding.cardPhoto2.isEnabled = false
+        binding.cardPhoto3.isEnabled = false
     }
 
     private fun launchCamera() {
@@ -177,24 +163,16 @@ class GpsPhotoFragment : Fragment() {
     private fun handlePhotoCaptured() {
         val dummyBitmap = Bitmap.createBitmap(224, 224, Bitmap.Config.ARGB_8888)
         
-        val ivPhoto = when (currentPhotoIndex) {
-            1 -> view?.findViewById<ImageView>(R.id.iv_photo_1)
-            2 -> view?.findViewById<ImageView>(R.id.iv_photo_2)
-            3 -> view?.findViewById<ImageView>(R.id.iv_photo_3)
-            else -> null
-        }
-        
-        ivPhoto?.visibility = View.VISIBLE
-        ivPhoto?.setImageBitmap(dummyBitmap)
-        
         when (currentPhotoIndex) {
             1 -> {
+                binding.ivPhoto1Preview.visibility = View.VISIBLE
+                binding.ivPhoto1Preview.setImageBitmap(dummyBitmap)
                 sharedViewModel.setPhoto1Uri("uri_1")
-                view?.findViewById<Button>(R.id.btn_photo_2)?.isEnabled = true
+                binding.cardPhoto2.isEnabled = true
             }
             2 -> {
                 sharedViewModel.setPhoto2Uri("uri_2")
-                view?.findViewById<Button>(R.id.btn_photo_3)?.isEnabled = true
+                binding.cardPhoto3.isEnabled = true
             }
             3 -> {
                 sharedViewModel.setPhoto3Uri("uri_3")
@@ -206,25 +184,12 @@ class GpsPhotoFragment : Fragment() {
     }
 
     private fun processAiDetection(bitmap: Bitmap, index: Int) {
-        val container = when (index) {
-            1 -> view?.findViewById<FrameLayout>(R.id.ai_result_container_1)
-            2 -> view?.findViewById<FrameLayout>(R.id.ai_result_container_2)
-            3 -> view?.findViewById<FrameLayout>(R.id.ai_result_container_3)
-            else -> null
-        } ?: return
-
-        container.removeAllViews()
-        val aiView = layoutInflater.inflate(R.layout.ai_detection_result, container, false)
-        val tvText = aiView.findViewById<TextView>(R.id.tv_ai_result_text)
-        tvText.text = "पीक ओळखत आहे..."
-        container.addView(aiView)
-
         lifecycleScope.launch {
             val declaredCrop = sharedViewModel.cropFormData.value?.cropName
             val result = tfLiteCropDetector.detectCrop(bitmap, declaredCrop)
             
             val percent = (result.confidence * 100).toInt()
-            tvText.text = "ओळखलेले पीक: ${result.detectedCrop} | विश्वास: $percent%"
+            binding.tvAiResult.text = "🌱 ओळखलेले पीक: ${result.detectedCrop} ($percent%)"
             
             if (result.matchStatus == MatchStatus.MISMATCH) {
                 showMismatchDialog(declaredCrop ?: "", result.detectedCrop, percent)
@@ -249,12 +214,13 @@ class GpsPhotoFragment : Fragment() {
 
     private fun checkCompletion() {
         if (isGeoFencePassed && currentPhotoIndex == 3) {
-            view?.findViewById<Button>(R.id.btn_next)?.isEnabled = true
+            binding.btnStep3Next.isEnabled = true
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         geoFenceEngine.stopValidation()
+        _binding = null
     }
 }

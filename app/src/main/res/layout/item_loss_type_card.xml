@@ -26,14 +26,14 @@
                 android:id="@+id/tv_emoji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🌧️"
+                android:text="@string/str_auto_210"
                 android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tv_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="अतिवृष्टी"
+                android:text="@string/str_auto_92"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
@@ -45,7 +45,7 @@
             android:id="@+id/tv_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="✓"
+            android:text="@string/str_auto_129"
             android:textColor="@color/green_primary"
             android:textSize="16sp"
             android:textStyle="bold"

@@ -1,179 +1,388 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/bg_screen">
+    android:background="@color/background"
+    android:fillViewport="true">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        style="@style/Widget.App.Toolbar.Green"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:title="नुकसान तक्रार नोंदणी"
-        app:navigationIcon="@android:drawable/ic_menu_revert"
-        app:navigationIconTint="@color/text_white" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:paddingBottom="80dp">
 
-    <include layout="@layout/step_indicator" />
-    <include android:id="@+id/offline_banner" layout="@layout/offline_banner" />
+        <!-- Page Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_auto_86"
+            android:textColor="@color/primary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:layout_marginBottom="4dp" />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_auto_87"
+            android:textColor="@color/on_surface_variant"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
 
-        <LinearLayout
+        <!-- Gat & Season Selector Card -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="24dp">
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface_container_lowest"
+            app:strokeColor="@color/outline_variant"
+            app:strokeWidth="1dp"
+            android:layout_marginBottom="12dp">
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/saffron_light"
-                app:cardElevation="0dp"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
-                app:cardCornerRadius="0dp"
-                android:layout_marginBottom="16dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:gravity="center">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📋 तुमचा दावा क्रमांक" android:textColor="@color/text_secondary" android:textSize="12sp" android:layout_marginBottom="4dp"/>
-                    <TextView android:id="@+id/tv_claim_id" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MH-2025-PUNE-HAV-87-001" android:textColor="@color/saffron_dark" android:textSize="16sp" android:textStyle="bold" android:typeface="monospace"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="हे आपले तात्काळ पुरावा क्रमांक आहे" android:textColor="@color/text_secondary" android:textSize="11sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            
-            <TextView android:id="@+id/tv_farmer_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone"/>
+                android:orientation="vertical"
+                android:padding="12dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/bg_card"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.App.TextInputLayout"
+                <!-- Gat Dropdown -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_auto_88"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_loss_gat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginBottom="12dp"
+                    app:boxStrokeColor="@color/outline"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp">
+                    <AutoCompleteTextView
+                        android:id="@+id/acv_loss_gat"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="गट निवडा"
-                        app:helperText="Select Gat"
-                        app:endIconMode="dropdown_menu">
-                        <AutoCompleteTextView
-                            android:id="@+id/spinner_gat"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:textSize="15sp"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <TextView
-                        android:id="@+id/tv_registered_crop"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="नोंदणीकृत पीक: -"
-                        android:textColor="@color/green_primary"
-                        android:textSize="13sp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginStart="4dp"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="48dp"
+                        android:hint="@string/str_auto_103"
+                        android:inputType="none"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Season (auto-filled) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_auto_20"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_loss_season"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/str_auto_89"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:background="@drawable/bg_autofilled_field" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Weather Info Banner -->
+        <LinearLayout
+            android:id="@+id/layout_weather_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/secondary_container"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:srcCompat="@drawable/ic_info"
+                app:tint="@color/on_secondary_container"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="Info" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="नुकसानाचे कारण"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="8dp"/>
-
-            <GridLayout
-                android:id="@+id/grid_loss_types"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:columnCount="2"
-                android:useDefaultMargins="true"
-                android:layout_marginBottom="16dp"/>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/bg_card"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.App.TextInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="घटना तारीख"
-                        app:helperText="Incident Date"
-                        app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
-                        app:endIconMode="custom">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_incident_date"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:focusable="false"
-                            android:clickable="true"
-                            android:textSize="15sp"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_weather_check"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:visibility="gone"
-                        android:textColor="@color/text_white" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/bg_card"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="प्रभावित क्षेत्र (Ha.)" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="15sp" android:layout_marginBottom="8dp"/>
-                    <com.google.android.material.slider.Slider
-                        android:id="@+id/slider_affected_area"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:valueFrom="0.0"
-                        android:valueTo="1.0"
-                        android:stepSize="0.1"
-                        app:thumbTint="@color/green_primary"
-                        app:trackColorActive="@color/green_primary"
-                        app:trackColorInactive="@color/green_light"/>
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/tv_affected_area_val"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="प्रभावित: 0.0 Ha."
-                        app:chipBackgroundColor="@color/green_tint"
-                        android:textColor="@color/green_primary"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_next"
-                style="@style/Widget.App.Button.Primary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="पुढे →" />
-
+                android:text="@string/str_auto_90"
+                android:textColor="@color/on_secondary_container"
+                android:textSize="14sp" />
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</LinearLayout>
+
+        <!-- Loss Type Grid -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_auto_91"
+            android:textColor="@color/on_surface"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <GridLayout
+            android:id="@+id/grid_loss_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="4"
+            android:layout_marginBottom="16dp">
+
+            <!-- Loss Type cards are inflated programmatically but we define the first as selected state -->
+            <!-- Flood Rain — selected -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loss_heavy_rain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/surface_container_lowest"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="2dp"
+                android:layout_margin="4dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_rainy" app:tint="@color/primary" android:contentDescription="Heavy Rain" android:layout_marginBottom="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_92" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Flood -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loss_flood"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/surface_container_lowest"
+                app:strokeColor="@color/outline_variant"
+                app:strokeWidth="1dp"
+                android:layout_margin="4dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_flood" app:tint="@color/outline" android:contentDescription="Flood" android:layout_marginBottom="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_93" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Drought -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loss_drought"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/surface_container_lowest"
+                app:strokeColor="@color/outline_variant"
+                app:strokeWidth="1dp"
+                android:layout_margin="4dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_wb_sunny" app:tint="@color/outline" android:contentDescription="Drought" android:layout_marginBottom="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_94" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pest -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loss_pest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/surface_container_lowest"
+                app:strokeColor="@color/outline_variant"
+                app:strokeWidth="1dp"
+                android:layout_margin="4dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_bug_report" app:tint="@color/outline" android:contentDescription="Pest" android:layout_marginBottom="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_95" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Hail -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loss_hail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/surface_container_lowest"
+                app:strokeColor="@color/outline_variant"
+                app:strokeWidth="1dp"
+                android:layout_margin="4dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_ac_unit" app:tint="@color/outline" android:contentDescription="Hail" android:layout_marginBottom="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_96" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Disease -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loss_disease"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/surface_container_lowest"
+                app:strokeColor="@color/outline_variant"
+                app:strokeWidth="1dp"
+                android:layout_margin="4dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="16dp">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" app:srcCompat="@drawable/ic_coronavirus" app:tint="@color/outline" android:contentDescription="Disease" android:layout_marginBottom="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_97" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" android:gravity="center" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+        <!-- Incident Date & Affected Area Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:cardBackgroundColor="@color/surface_container_lowest"
+            app:strokeColor="@color/outline_variant"
+            app:strokeWidth="1dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <!-- Date -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_auto_98"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_incident_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="16dp"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_calendar_today"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeColor="@color/outline">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_incident_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="@string/str_auto_33"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Affected Area Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/str_auto_99"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_affected_area_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_auto_100"
+                        android:textColor="@color/on_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_badge_primary_container"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekbar_affected_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="50"
+                    android:progress="5"
+                    android:progressTint="@color/primary"
+                    android:thumbTint="@color/primary"
+                    android:layout_marginBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_101" android:textColor="@color/on_surface_variant" android:textSize="12sp" />
+                    <Space android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_auto_102" android:textColor="@color/on_surface_variant" android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Next Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_loss_next"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/str_auto_67"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/brand_orange"
+            android:textColor="#FFFFFF"
+            app:icon="@drawable/ic_arrow_forward"
+            app:iconGravity="end"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

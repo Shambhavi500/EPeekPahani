@@ -1,63 +1,64 @@
 package io.sc.eppCordova.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.chip.Chip
 import io.sc.eppCordova.R
+import io.sc.eppCordova.databinding.ItemGatCardBinding
 import io.sc.eppCordova.domain.model.GatStatusItem
 
 class GatListAdapter(
     private val onItemClick: (GatStatusItem) -> Unit
-) : RecyclerView.Adapter<GatListAdapter.GatViewHolder>() {
-
-    private var items: List<GatStatusItem> = emptyList()
-
-    fun submitList(newItems: List<GatStatusItem>) {
-        items = newItems
-        notifyDataSetChanged()
-    }
+) : ListAdapter<GatStatusItem, GatListAdapter.GatViewHolder>(GatDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GatViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_gat_card, parent, false)
-        return GatViewHolder(view, onItemClick)
+        val binding = ItemGatCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return GatViewHolder(binding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: GatViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = items.size
-
     class GatViewHolder(
-        itemView: View,
+        private val binding: ItemGatCardBinding,
         private val onItemClick: (GatStatusItem) -> Unit
-    ) : RecyclerView.ViewHolder(itemView) {
-        
-        private val cardView: MaterialCardView = itemView.findViewById(R.id.card_gat)
-        private val tvGatNumber: TextView = itemView.findViewById(R.id.tv_gat_number)
-        private val tvVillageArea: TextView = itemView.findViewById(R.id.tv_village_area)
-        private val chipStatus: Chip = itemView.findViewById(R.id.chip_status)
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: GatStatusItem) {
-            tvGatNumber.text = item.landRecord.gutNo
-            tvVillageArea.text = "${item.landRecord.areaHectares} Ha."
-            
-            chipStatus.text = item.status
+            binding.tvGatNumber.text = "गट क्र. ${item.landRecord?.gutNo ?: "-"}"
+            binding.tvGatArea.text = "क्षेत्र: ${item.landRecord?.areaHectares ?: "0"} हेक्टर"
+
+            binding.tvGatStatus.text = item.status
+            val ctx = binding.root.context
             when (item.status) {
-                "Pending" -> chipStatus.setChipBackgroundColorResource(android.R.color.darker_gray)
-                "Draft" -> chipStatus.setChipBackgroundColorResource(android.R.color.holo_orange_light)
-                "Submitted" -> chipStatus.setChipBackgroundColorResource(android.R.color.holo_blue_light)
-                "Verified" -> chipStatus.setChipBackgroundColorResource(android.R.color.holo_green_dark)
+                "Verified" -> {
+                    binding.tvGatStatus.setTextColor(ContextCompat.getColor(ctx, R.color.status_verified))
+                    binding.tvGatStatus.setBackgroundResource(R.drawable.bg_badge_verified)
+                }
+                "Pending" -> {
+                    binding.tvGatStatus.setTextColor(ContextCompat.getColor(ctx, R.color.status_pending))
+                    binding.tvGatStatus.setBackgroundResource(R.drawable.bg_badge_pending)
+                }
+                "Draft" -> {
+                    binding.tvGatStatus.setTextColor(ContextCompat.getColor(ctx, R.color.outline))
+                    binding.tvGatStatus.setBackgroundResource(R.drawable.bg_badge_draft)
+                }
+                else -> {
+                    binding.tvGatStatus.setTextColor(ContextCompat.getColor(ctx, R.color.on_surface_variant))
+                }
             }
-            
-            cardView.setOnClickListener {
-                onItemClick(item)
-            }
+
+            binding.root.setOnClickListener { onItemClick(item) }
         }
+    }
+
+    class GatDiffCallback : DiffUtil.ItemCallback<GatStatusItem>() {
+        override fun areItemsTheSame(old: GatStatusItem, new: GatStatusItem) =
+            old.landRecord?.gutNo == new.landRecord?.gutNo
+        override fun areContentsTheSame(old: GatStatusItem, new: GatStatusItem) = old == new
     }
 }

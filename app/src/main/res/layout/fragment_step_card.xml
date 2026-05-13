@@ -18,7 +18,7 @@
             android:id="@+id/tv_step_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="पायरी 1 / 6"
+            android:text="@string/str_auto_178"
             app:chipBackgroundColor="@color/saffron"
             android:textColor="@color/text_white"
             android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:id="@+id/tv_instruction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="कृपया खराब झालेल्या पिकाचे संपूर्ण क्षेत्र दाखवा"
+            android:text="@string/str_auto_179"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -50,7 +50,7 @@
             style="@style/Widget.App.Button.Outline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="▶ निर्देश ऐका"
+            android:text="@string/str_auto_180"
             android:layout_marginBottom="32dp"/>
 
         <com.google.android.material.card.MaterialCardView
@@ -71,7 +71,7 @@
                     style="@style/Widget.App.Button.Danger"
                     android:layout_width="200dp"
                     android:layout_height="64dp"
-                    android:text="रेकॉर्ड करा (60s)"
+                    android:text="@string/str_auto_181"
                     app:cornerRadius="32dp" />
 
                 <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -87,7 +87,7 @@
                     android:id="@+id/tv_re_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="पुन्हा रेकॉर्ड करा"
+                    android:text="@string/str_auto_182"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp"
                     android:layout_marginTop="16dp"

@@ -11,7 +11,7 @@
         style="@style/Widget.App.Toolbar.Green"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="माझ्या नोंदी"
+        app:title="@string/str_auto_139"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         app:navigationIconTint="@color/text_white" />
 
@@ -25,9 +25,9 @@
         app:tabTextColor="@color/text_secondary"
         app:tabMode="fixed"
         app:tabGravity="fill">
-        <com.google.android.material.tabs.TabItem android:text="पीक नोंदणी" />
-        <com.google.android.material.tabs.TabItem android:text="नुकसान दावे" />
-        <com.google.android.material.tabs.TabItem android:text="प्रमाणपत्रे" />
+        <com.google.android.material.tabs.TabItem android:text="@string/str_auto_136" />
+        <com.google.android.material.tabs.TabItem android:text="@string/str_auto_137" />
+        <com.google.android.material.tabs.TabItem android:text="@string/str_auto_138" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
