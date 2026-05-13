@@ -72,9 +72,7 @@ class DashboardFragment : Fragment() {
         }
 
         // Quick actions
-        binding.cardNewRegistration.setOnClickListener {
-            // Register idea removed
-        }
+
 
         binding.cardMyCertificate.setOnClickListener {
             findNavController().navigate(R.id.action_dashboard_to_certificate)

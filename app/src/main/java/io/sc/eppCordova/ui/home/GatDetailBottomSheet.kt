@@ -32,10 +32,7 @@ class GatDetailBottomSheet(
         binding.tvDetailArea.text = "क्षेत्र: ${landRecord.areaHectares} Ha."
         binding.tvDetailOwner.text = "खातेदार: ${landRecord.ownerName}"
         
-        binding.btnRegisterCrop.setOnClickListener {
-            dismiss()
-            // Register idea removed
-        }
+
     }
 
     override fun onDestroyView() {
